@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+service
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Services</li>
+        </ul>
+        <h1>Services</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Services Style Three-->
+<section class="services-style-three change-background">
+    <div class="auto-container">
+        <!--Sec Title One-->
+        <div class="sec-title-one">
+            <h2>OUR SERVICES</h2>
+            <div class="text">Overcome faithful endless salvation enlightenment salvation overcome pious merciful<br>ascetic madness holiest joy passion zarathustra.</div>
+        </div>
+    
+        <div class="row clearfix">
+            <!--Services Block Four-->
+            {% for x in service_attrs %}
+            <div class="services-block-four col-md-4 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <!--Upper Box-->
+                    <div class="upper-box clearfix">
+                        <div class="icon-box">
+                            <span class="{{x.image}}"></span>
+                        </div>
+                        <h3><a href="#">{{x.title}}</a></h3>
+                    </div>
+                    <div class="text">{{x.content|safe}}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!--Services Style Two-->
+<section class="services-style-two" style="background-image:url(images/background/1.png);">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--Services Block Two-->
+            {% for x in moreattrs %}
+            <div class="services-block-two col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <div class="middle-box"></div>
+                    <!--Icon Box-->
+                    <div class="icon-box">
+                        <span class="{{x.image}}"></span>
+                    </div>
+                    <h2>{{x.title}}</h2>
+                    <div class="text">{{x.content|safe}}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!--Testimonial Style Two-->
+<section class="testimonial-style-two">
+    <div class="auto-container">
+        <!--Section Title One-->
+        <div class="sec-title-one">
+            <h2>Whats Your Problem</h2>
+            <div class="text">Tell us your problem so we can solve it properly and accurately.</div>
+        </div>
+        <a href="{% url 'service_app:service_form' %}" class="read-more theme-btn btn-style-two" id="button-tell">Read More</a>
+    </div>
+</section>
+{% endblock %}

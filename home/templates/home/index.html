@@ -1,0 +1,430 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<!--Main Slider-->
+<section class="main-slider">
+    
+    <div class="tp-banner-container">
+        <div class="tp-banner">
+            {% for poster in posters %}
+            <ul>
+                
+                {% if poster.type1 == True %}
+                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/1.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="{{poster.image.url}}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                    
+                    <!--Overlay-->
+                    <div class="overlay-style-one"></div>
+                    
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="left" data-hoffset="15"
+                    data-y="center" data-voffset="-50"
+                    data-speed="1500"
+                    data-start="0"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>{{poster.title}}</h2></div>
+                    
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="left" data-hoffset="15"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><div class="text">{{poster.content|safe}}</div></div>
+                    
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="left" data-hoffset="15"
+                    data-y="center" data-voffset="130"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="{{poster.link}}" class="theme-btn btn-style-one">VIEW SERVICES</a></div>
+                    
+                    </li>
+                {% endif %}
+                
+                {% if poster.type2 == True %}
+                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/2.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="{{poster.image.url}}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                    
+                    <!--Overlay-->
+                    <div class="overlay-style-two"></div>
+                    
+                    <div class="tp-caption sft sfb tp-resizeme"
+                    data-x="center" data-hoffset="15"
+                    data-y="center" data-voffset="-50"
+                    data-speed="1500"
+                    data-start="0"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="text-uppercase">{{poster.title}}</h2></div>
+                    
+                    <div class="tp-caption sfb sfb tp-resizeme"
+                    data-x="center" data-hoffset="15"
+                    data-y="center" data-voffset="30"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><div class="text text-center">{{poster.content|safe}}</div></div>
+                    
+                    <div class="tp-caption sfb sfb tp-resizeme"
+                    data-x="center" data-hoffset="15"
+                    data-y="center" data-voffset="100"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="{{poster.link}}" class="theme-btn btn-style-one">VIEW SERVICES</a></div>
+                    
+                    </li>
+                {% endif %}
+                
+                {% if poster.type3 == True %}
+                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/3.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="{{poster.image.url}}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                    
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="right" data-hoffset="-15"
+                    data-y="center" data-voffset="-50"
+                    data-speed="1500"
+                    data-start="0"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="computer-problem">{{poster.title}}</h2></div>
+                    
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="right" data-hoffset="-15"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><div class="offer text-right">{{poster.content|safe}}</div></div>
+                    
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="right" data-hoffset="-15"
+                    data-y="center" data-voffset="130"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="{{poster.link}}" class="theme-btn btn-style-two">GET A QUOTE</a> &ensp;&ensp; <a href="#" class="theme-btn btn-style-one">CONTACT US</a></div>
+                    
+                    
+                    </li>
+                {% endif %}
+            </ul>
+            {% endfor %}
+            <div class="tp-bannertimer"></div>
+        </div>
+    </div>
+</section>
+
+
+<!--Repair Section-->
+<section class="repair-section">
+    <div class="auto-container">
+    
+        <!--Sec Title One-->
+        <div class="sec-title-one">
+            <h2>WE ARE NAPLES PHONE REPAIR</h2>
+            <div class="text">Overcome faithful endless salvation enlightenment salvation overcome pious merciful<br>ascetic madness holiest joy passion zarathustra suicide overcome snare.</div>
+        </div>
+    
+        <div class="row clearfix">
+            
+            <!--Services Block-->
+            {% for x in shopattr %}
+            <div class="services-block col-md-4 col-sm-6 col-xs-12">
+                <div class="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <div class="big-letter">{{x.first_word}}</div>
+                    <!--Icon Box-->
+                    <div class="icon-box">
+                        <span class="{{x.image}}"></span>
+                    </div>
+                    <h3>{{x.title}}</h3>
+                    <div class="text">{{x.content|safe}}</div>
+                    <a class="read-more" href="{{x.link}}">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+
+<!--Services Style Two-->
+<section class="services-style-two" style="background-image:url(images/background/1.png);">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--Services Block Two-->
+            {% for x in moreattr %}
+            <div class="services-block-two col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <div class="middle-box"></div>
+                    <!--Icon Box-->
+                    <div class="icon-box">
+                        <span class="{{x.image}}"></span>
+                    </div>
+                    <h2>{{x.title}}</h2>
+                    <div class="text">{{x.content|safe}}</div>
+                    <a class="learn-more" href="{{x.link}}">Learn More</a>
+                </div>
+            </div>
+            {% endfor %}
+            
+            <!--Services Block Two-->
+            <!--Mobile Big Image-->
+            <!--<div class="mobile-image">
+                <figure class="image">
+                    <img src="images/background/1.png" alt="" />
+                </figure>
+            </div>-->
+            
+        </div>
+    </div>
+</section>
+
+<!--Services Section-->
+{% for x in morediscrip %}
+<section class="services-section">
+    <div class="auto-container">
+        <div class="row">
+            <!--Service Content-->
+            <div class="service-content col-md-6 col-sm-12 col-xs-12">
+                <div class="sec-title-two">
+                    <h2>{{x.title}}</h2>
+                    <div class="text">{{x.littel_content|safe}}</div>
+                </div>
+                
+                <div class="row clearfix">
+                    <div class="col-md-12">
+                        <a class="theme-btn btn-style-one" href="{{x.links}}">VIEW OUR SERVICES</a>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!--Verticle Carousel Column-->
+            <div class="carousel-column col-md-6 col-sm-12 col-xs-12">
+                <ul class="single-verticle-carousel">
+                    <li><img src="{{x.image1.url}}" alt="" /></li>
+                    <li><img src="{{x.image2.url}}" alt="" /></li>
+                    <li><img src="{{x.image3.url}}" alt="" /></li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+<!--Testimonial Style One-->
+<section class="testimonial-style-one">
+    <div class="auto-container">
+        <!--Section Title One-->
+        <div class="sec-title-one">
+            <h2>WHAT OUR CUSTOMERS SAID</h2>
+            <div class="text">Overcome faithful endless salvation enlightenment salvation overcome pious merciful<br>ascetic madness holiest joy passion zarathustra suicide overcome snare.</div>
+        </div>
+    
+        <div class="testimonial-carousel">
+            <div class="two-item-carousel">
+            
+                <!--Testimonial Block-->
+                <div class="testimonial-block-one">
+                    <div class="inner-box">
+                        <!--Image Box-->
+                        <figure class="image-box">
+                            <img src="{% static "images/resource/testimonial-1.jpg" %}" alt="" />
+                        </figure>
+                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
+                        <!--Designation-->
+                        <div class="designation">@ Lita, <span>employed by Company Name</span></div>
+                    </div>
+                </div>
+                
+                <!--Testimonial Block-->
+                <div class="testimonial-block-one">
+                    <div class="inner-box">
+                        <!--Image Box-->
+                        <figure class="image-box">
+                            <img src="x{% static "images/resource/testimonial-1.jpg" %}" alt="" />
+                        </figure>
+                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
+                        <!--Designation-->
+                        <div class="designation">@ Stephen George, <span>employed by Company Name</span></div>
+                    </div>
+                </div>
+                
+                <!--Testimonial Block-->
+                <div class="testimonial-block-one">
+                    <div class="inner-box">
+                        <!--Image Box-->
+                        <figure class="image-box">
+                            <img src="{% static "images/resource/testimonial-1.jpg" %}" alt="" />
+                        </figure>
+                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
+                        <!--Designation-->
+                        <div class="designation">@ Lita, <span>employed by Company Name</span></div>
+                    </div>
+                </div>
+                
+                <!--Testimonial Block-->
+                <div class="testimonial-block-one">
+                    <div class="inner-box">
+                        <!--Image Box-->
+                        <figure class="image-box">
+                            <img src="{% static "images/resource/testimonial-2.jpg" %}" alt="" />
+                        </figure>
+                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
+                        <!--Designation-->
+                        <div class="designation">@ Stephen George, <span>employed by Company Name</span></div>
+                    </div>
+                </div>
+                
+                <!--Testimonial Block-->
+                <div class="testimonial-block-one">
+                    <div class="inner-box">
+                        <!--Image Box-->
+                        <figure class="image-box">
+                            <img src="{% static "images/resource/testimonial-1.jpg" %}" alt="" />
+                        </figure>
+                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
+                        <!--Designation-->
+                        <div class="designation">@ Lita, <span>employed by Company Name</span></div>
+                    </div>
+                </div>
+                
+                <!--Testimonial Block-->
+                <div class="testimonial-block-one">
+                    <div class="inner-box">
+                        <!--Image Box-->
+                        <figure class="image-box">
+                            <img src="{% static "images/resource/testimonial-2.jpg" %}" alt="" />
+                        </figure>
+                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
+                        <!--Designation-->
+                        <div class="designation">@ Stephen George, <span>employed by Company Name</span></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Blog Section-->
+<section class="blog-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--News Block-->
+            <div class="news-block left-blog col-md-6 col-sm-12 col-xs-12">
+                <!--Section Title One-->
+                <div class="sec-title-two">
+                    <h2>OUR BLOG</h2>
+                    <div class="text">Gains hope spirit justice chaos society madness suicide god. Virtues will ultimate<br>abstract sexuality mountains marvelous virtues.</div>
+                    <a href="#" class="theme-btn btn-style-two">GO TO OUR BLOG</a>
+                </div>
+                
+                <!--Inner Box-->
+                <div class="inner-box">
+                    <div class="image-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <a href="blog-single.html"><img src="{% static "images/resource/news-1.jpg" %}" alt="" /></a>
+                    </div>
+                    <!--Lower Content-->
+                    <div class="lower-content">
+                        <h3><a href="blog-single.html">Unlocking Pin Protected Devices</a></h3>
+                        <ul class="list">
+                            <li><span class="icon flaticon-avatar"></span> Posted by <span class="posted">Stephen</span></li>
+                            <li><span class="icon flaticon-business"></span> 27 August 2016</li>
+                        </ul>
+                        <div class="text">Free fearful disgust hatred fearful decieve. Strong chaos eternal-return abstract of virtues hope philosophy marvelous selfish faith. Disgust good abstract war passion mountains sea derive morality play oneself holiest inexpedient.</div>
+                        <a class="read-more" href="blog-single.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!--News Block-->
+            <div class="news-block right-blog col-md-6 col-sm-12 col-xs-12">
+                <!--Inner Box-->
+                <div class="inner-box">
+                    <div class="image-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <a href="blog-single.html"><img src="{% static "images/resource/news-2.jpg" %}" alt="" /></a>
+                    </div>
+                    <!--Lower Content-->
+                    <div class="lower-content">
+                        <h3><a href="blog-single.html">Complete Disassembly & Installation Guides</a></h3>
+                        <ul class="list">
+                            <li><span class="icon flaticon-avatar"></span> Posted by <span class="posted">Andriana</span></li>
+                            <li><span class="icon flaticon-business"></span> 25 August 2016</li>
+                        </ul>
+                        <div class="text">Free fearful disgust hatred fearful decieve. Strong chaos eternal-return abstract of virtues hope philosophy marvelous selfish faith. Disgust good abstract war passion mountains sea derive morality play oneself holiest inexpedient.</div>
+                        <a class="read-more" href="blog-single.html">Read More</a>
+                    </div>
+                </div>
+                
+                <!-- Subscribe -->
+                <div class="subscribe wow zoomInStable" data-wow-delay="0ms" data-wow-duration="1500ms" style="background-image:url({% static "images/resource/subcribe.jpg" %});">
+                    <h3>SUBSCRIBE TO OUR NEWS</h3>
+                    <form method="post" action="index.html">
+                        <div class="row clearfix">
+                            <div class="form-group col-md-9 col-sm-9 col-xs-12">
+                                <input type="email" name="email" value="" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-3 col-xs-12">
+                                <button type="submit" class="theme-btn btn-style-one">SUBSCRIBE</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+{% endblock %}

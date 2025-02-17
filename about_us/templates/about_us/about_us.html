@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+about-us
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">About Us</li>
+        </ul>
+        <h1>About Us</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Repair Section-->
+<section class="phone-repair-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+        
+            <!--Image Box-->
+            {% for x in about_us %}
+            <div class="image-column col-md-5 col-sm-12 col-xs-12" style="background-image:url({% static "images/resource/repair-1.jpg" %});">
+                <div class="text">ABOUT US</div>
+                <figure class="image-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <img src="{{x.image.url}}" alt="" />
+                </figure>
+            </div>
+            
+            <!--Content Column-->
+            <div class="content-column col-md-7 col-sm-12 col-xs-12">
+                <div class="inner-box">
+                    <div class="sec-title-two">
+                        <h2>{{x.title}}</h2>
+                        <div class="text">
+                            <p>{{x.content|safe}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+
+<!--Featured Style Two-->
+<section class="featured-style-two">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--Featured Block-->
+            {% for x in attr %}
+            <div class="featured-block col-md-4 col-sm-6 col-xs">
+                <div class="inner-box">
+                    <h3>{{x.title}}</h3>
+                    <div class="lower-content">
+                        <div class="number-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <span class="{{x.image}}"></span>
+                        </div>
+                        <div class="text">{{x.content|safe}}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--End Featured Style Two-->
+
+<!--Technicians Section-->
+<section class="technician-section">
+    <div class="auto-container">
+    
+        <div class="sec-title-one">
+            <h2>MEET OUR TECHNICIANS</h2>
+            <div class="text">Overcome faithful endless salvation enlightenment salvation overcome pious merciful<br>ascetic madness holiest joy passion zarathustra suicide overcome snare.</div>
+        </div>
+    
+        <div class="row clearfix">
+
+            <!--Technicians Block-->
+            {% for x in team %}
+            <div class="technicians-block col-md-4 col-sm-6 col-xs-12">
+                <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <div class="image-box">
+                        <img src="{{x.image.url}}" alt="" />
+                    </div>
+                    <div class="lower-content">
+                        <!--Title Box-->
+                        <div class="title-box">
+                            <h3><a href="#">{{x.name}}</a></h3>
+                        </div>
+                        <!--Social Links Two-->
+                        <ul class="social-links-two">
+                            <li><a class="fa fa-facebook-f" href="{{x.facebook}}"></a></li>
+                            <li><a class="fa fa-twitter" href="{{x.twitter}}"></a></li>
+                            <li><a class="fa fa-google-plus" href="{{x.google}}"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}   
+        </div>
+    </div>
+</section>
+
+<!--sponsors style One-->
+<section class="sponsors-style-one">
+    <div class="auto-container">
+        <div class="sponsors-outer">
+            <!--Sponsors Carousel-->
+            <ul class="sponsors-carousel">
+                <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure></li>
+                <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure></li>
+                <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure></li>
+                <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure></li>
+                <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/5.png" alt=""></a></figure></li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}
