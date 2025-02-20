@@ -17,6 +17,7 @@ service
 <!--End Page Title-->
 
 <!--Services Style Three-->
+<!--Testimonial Style Two-->
 <section class="services-style-three change-background">
     <div class="auto-container">
         <!--Sec Title One-->
@@ -44,7 +45,16 @@ service
         </div>
     </div>
 </section>
-
+<section class="testimonial-style-two" id="service-section-1">
+    <div class="auto-container">
+        <!--Section Title One-->
+        <div class="sec-title-one">
+            <h2>Whats Your Problem</h2>
+            <div class="text">Tell us your problem so we can solve it properly and accurately.</div>
+        </div>
+        <a href="{% url 'service_app:ticket_list' %}" class="read-more theme-btn btn-style-two" id="button-tell">Read More</a>
+    </div>
+</section>
 <!--Services Style Two-->
 <section class="services-style-two" style="background-image:url(images/background/1.png);">
     <div class="auto-container">
@@ -64,18 +74,6 @@ service
             </div>
             {% endfor %}
         </div>
-    </div>
-</section>
-
-<!--Testimonial Style Two-->
-<section class="testimonial-style-two">
-    <div class="auto-container">
-        <!--Section Title One-->
-        <div class="sec-title-one">
-            <h2>Whats Your Problem</h2>
-            <div class="text">Tell us your problem so we can solve it properly and accurately.</div>
-        </div>
-        <a href="{% url 'service_app:service_form' %}" class="read-more theme-btn btn-style-two" id="button-tell">Read More</a>
     </div>
 </section>
 {% endblock %}

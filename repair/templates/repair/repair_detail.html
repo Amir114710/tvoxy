@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+repair
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url(images/background/3.jpg);">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active"> Mobile Repair</li>
+        </ul>
+        <h1>Mobile Repair</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Shop Section-->
+<section class="shop-section shop-page">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--Shop Item-->
+            {% for x in repair.mobile_repair.all %}
+            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <figure class="image-box">
+                        <a href="{% url 'repair_app:mobile_repair_detail' x.id %}"><img src="{{x.image.url}}" alt="" /></a>
+                        <div class="product-tag">Sale</div>
+                    </figure>
+                    <!--Lower Content-->
+                    <div class="lower-content">
+                        <h3><a href="{% url 'repair_app:mobile_repair_detail' x.id %}">{{x.title}}</a></h3>
+                        <div class="price">{{x.price}}</div>
+                        <a href="{% url 'repair_app:mobile_repair_detail' x.id %}" class="cart-btn theme-btn btn-style-two">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

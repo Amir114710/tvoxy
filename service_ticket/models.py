@@ -22,6 +22,8 @@ class Ticket(models.Model):
     ]
     user = models.ForeignKey(User , on_delete=models.CASCADE , related_name='user_service_ticket')
     subject = models.CharField(max_length=560)
+    phone_model = models.CharField(max_length=560 , null=True)
+    phone_brand = models.CharField(max_length=560 , null=True)
     discription = RichTextUploadingField(help_text='little information about ticket')
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='open')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -39,7 +41,7 @@ class TicketMessage(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return super().__str__()
+        return self.message[:50]
     
     class Meta:
         ordering = ('-created_at',)
@@ -54,4 +56,4 @@ class TicketAnswer(models.Model):
         return self.answer[:50]
     
     class Meta:
-        ordering = ('-created',)
+        ordering = ('-created_at',)

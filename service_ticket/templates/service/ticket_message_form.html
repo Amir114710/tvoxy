@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+service_form
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">TicketMessage</li>
+        </ul>
+        <h1>TicketMessage</h1>
+    </div>
+</section>
+<!--End Page Title-->
+<!--Faq Section-->
+<div class="faqs-section" style="margin-top: -10em;">
+    <!--Sidebar-->
+    <div class="feedback-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <!--Content Side-->	
+                <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <!--Feedback Form-->
+                    <div class="default-form feedback-form">
+                        <!--Sec Title Two-->
+                        <div class="sec-title-two">
+                            <h2>Message</h2>
+                        </div>
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <div class="row clearfix">
+                                <div class="form-group col-lg-12 col-sm-12 col-xs-12">
+                                    <div class="field-label">Tell your problem<sup>*</sup></div>
+                                    <textarea name="message" placeholder=""></textarea>
+                                </div>
+                                <div class="form-group text-left col-md-12 col-xs-12"><button type="submit" class="theme-btn btn-style-three">Send</button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--Content Side-->
+            </div>
+        </div>
+    </div>
+    <!--Content Side-->   
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--Content Side-->	
+            <div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                <!--Question Block-->
+                {% for x in ticket.ticket_message.all %}
+                <div class="question-block">
+                    <h3>{{x.user.username}}</h3>
+                    <div class="text">{{x.message|safe}}</div>
+                </div>
+                
+                    {% for t in x.message_ticket.all %}
+                    <!--Question Block-->
+                    <div class="question-block" id="answer">
+                        <h3>Admin</h3>
+                        <div class="text">{{t.answer|safe}}</div>
+                    </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <!--Sidebar-->	
+            <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12" id="info-box-message-div">
+                <aside class="sidebar">
+                        <!-- Sidebar / Info Culumn -->	
+                        <div class="info-culumn col-lg-4 col-md-4 col-sm-12 col-xs-12" id="info-box-message">
+                            <!--Default Info Box-->
+                            <!--Default Info Box-->
+                            <div class="default-info-box">
+                                <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                                    <div class="icon-box">
+                                        <span class="flaticon-pen"></span>
+                                    </div>
+                                    <h3>Subject</h3>
+                                    <div class="text">{{ticket.subject}}</div>
+                                </div>
+                            </div>
+
+                            <div class="default-info-box">
+                                <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                                    <div class="icon-box">
+                                        <span class="icon flaticon-technology-2"></span>
+                                    </div>
+                                    <h3>Phone Brand</h3>
+                                    <div class="text">{{ticket.phone_brand}}</div>
+                                </div>
+                            </div>
+                            
+                            <!--Default Info Box-->
+                            <div class="default-info-box">
+                                <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                                    <div class="icon-box">
+                                        <span class="icon flaticon-technology-2"></span>
+                                    </div>
+                                    <h3>Phone Model</h3>
+                                    <div class="text">{{ticket.phone_model}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Sidebar-->  
+                </aside>
+            </div> 
+        </div>
+    </div>
+</div>
+{% endblock %}

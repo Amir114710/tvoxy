@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Ticket  
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Ticket</li>
+        </ul>
+        <h1>Ticket</h1>
+    </div>
+</section>
+<!--End Page Title-->
+<section class="cart-section">
+    <div class="auto-container">
+        <!--Cart Outer-->
+        <div class="cart-outer">
+            <div class="table-outer">
+                <table class="cart-table">
+                    <thead class="cart-header">
+                        <tr>
+                            <th><!--<span class="fa fa-trash-o"></span>--></th>
+                            <th>SUBJECT</th>
+                            <th>STATUS</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for x in tickets %}
+                        <tr>
+                            <td class="remove"><a href="{% url 'service_app:delete_ticket' x.id %}" class="remove-btn"><span class="fa fa-remove"></span></a></td>
+                            <td>{{x.subject}}</td>
+                            <td>{{x.status}}</td>
+                            <td><a href="{% url 'service_app:ticket_message_create' x.id %}" class="read-more theme-btn btn-style-two">Read More</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="cart-options clearfix">
+            <div class="pull-right">
+                <a href="{% url 'service_app:create_ticket' %}">
+                    <button type="button" class="theme-btn btn-style-three">Create Ticket</button>
+                </a>
+            </div> 
+        </div>
+    </div>
+</section>
+<!--Cart Section-->c
+{% endblock %}

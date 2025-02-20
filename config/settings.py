@@ -33,7 +33,8 @@ ALLOWED_HOSTS = []
 APPS = [
     'home.apps.HomeConfig',
     'about_us.apps.AboutUsConfig',
-    'service.apps.ServiceConfig',
+    'repair.apps.RepairConfig',
+    'service_ticket.apps.ServiceConfig',
 ]
 
 PACKAGES = [

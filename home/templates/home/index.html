@@ -9,155 +9,155 @@ Home
     
     <div class="tp-banner-container">
         <div class="tp-banner">
-            {% for poster in posters %}
+            
             <ul>
-                
-                {% if poster.type1 == True %}
-                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/1.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="{{poster.image.url}}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                {% for poster in posters %}
+                    {% if poster.type1 == True %}
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/1.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
+                        <img src="{{poster.image.url}}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                        
+                        <!--Overlay-->
+                        <div class="overlay-style-one"></div>
+                        
+                        <div class="tp-caption sfl sfb tp-resizeme"
+                        data-x="left" data-hoffset="15"
+                        data-y="center" data-voffset="-50"
+                        data-speed="1500"
+                        data-start="0"
+                        data-easing="easeOutExpo"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.3"
+                        data-endspeed="1200"
+                        data-endeasing="Power4.easeIn"><h2>{{poster.title}}</h2></div>
+                        
+                        <div class="tp-caption sfl sfb tp-resizeme"
+                        data-x="left" data-hoffset="15"
+                        data-y="center" data-voffset="50"
+                        data-speed="1500"
+                        data-start="500"
+                        data-easing="easeOutExpo"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.3"
+                        data-endspeed="1200"
+                        data-endeasing="Power4.easeIn"><div class="text">{{poster.content|safe}}</div></div>
+                        
+                        <div class="tp-caption sfl sfb tp-resizeme"
+                        data-x="left" data-hoffset="15"
+                        data-y="center" data-voffset="130"
+                        data-speed="1500"
+                        data-start="1000"
+                        data-easing="easeOutExpo"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.3"
+                        data-endspeed="1200"
+                        data-endeasing="Power4.easeIn"><a href="{{poster.link}}" class="theme-btn btn-style-one">VIEW SERVICES</a></div>
+                        
+                        </li>
+                    {% endif %}
                     
-                    <!--Overlay-->
-                    <div class="overlay-style-one"></div>
+                    {% if poster.type2 == True %}
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/2.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
+                        <img src="{{poster.image.url}}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                        
+                        <!--Overlay-->
+                        <div class="overlay-style-two"></div>
+                        
+                        <div class="tp-caption sft sfb tp-resizeme"
+                        data-x="center" data-hoffset="15"
+                        data-y="center" data-voffset="-50"
+                        data-speed="1500"
+                        data-start="0"
+                        data-easing="easeOutExpo"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.3"
+                        data-endspeed="1200"
+                        data-endeasing="Power4.easeIn"><h2 class="text-uppercase">{{poster.title}}</h2></div>
+                        
+                        <div class="tp-caption sfb sfb tp-resizeme"
+                        data-x="center" data-hoffset="15"
+                        data-y="center" data-voffset="30"
+                        data-speed="1500"
+                        data-start="500"
+                        data-easing="easeOutExpo"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.3"
+                        data-endspeed="1200"
+                        data-endeasing="Power4.easeIn"><div class="text text-center">{{poster.content|safe}}</div></div>
+                        
+                        <div class="tp-caption sfb sfb tp-resizeme"
+                        data-x="center" data-hoffset="15"
+                        data-y="center" data-voffset="100"
+                        data-speed="1500"
+                        data-start="1000"
+                        data-easing="easeOutExpo"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.3"
+                        data-endspeed="1200"
+                        data-endeasing="Power4.easeIn"><a href="{{poster.link}}" class="theme-btn btn-style-one">VIEW SERVICES</a></div>
+                        
+                        </li>
+                    {% endif %}
                     
-                    <div class="tp-caption sfl sfb tp-resizeme"
-                    data-x="left" data-hoffset="15"
-                    data-y="center" data-voffset="-50"
-                    data-speed="1500"
-                    data-start="0"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2>{{poster.title}}</h2></div>
-                    
-                    <div class="tp-caption sfl sfb tp-resizeme"
-                    data-x="left" data-hoffset="15"
-                    data-y="center" data-voffset="50"
-                    data-speed="1500"
-                    data-start="500"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><div class="text">{{poster.content|safe}}</div></div>
-                    
-                    <div class="tp-caption sfl sfb tp-resizeme"
-                    data-x="left" data-hoffset="15"
-                    data-y="center" data-voffset="130"
-                    data-speed="1500"
-                    data-start="1000"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><a href="{{poster.link}}" class="theme-btn btn-style-one">VIEW SERVICES</a></div>
-                    
-                    </li>
-                {% endif %}
-                
-                {% if poster.type2 == True %}
-                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/2.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="{{poster.image.url}}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-                    
-                    <!--Overlay-->
-                    <div class="overlay-style-two"></div>
-                    
-                    <div class="tp-caption sft sfb tp-resizeme"
-                    data-x="center" data-hoffset="15"
-                    data-y="center" data-voffset="-50"
-                    data-speed="1500"
-                    data-start="0"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2 class="text-uppercase">{{poster.title}}</h2></div>
-                    
-                    <div class="tp-caption sfb sfb tp-resizeme"
-                    data-x="center" data-hoffset="15"
-                    data-y="center" data-voffset="30"
-                    data-speed="1500"
-                    data-start="500"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><div class="text text-center">{{poster.content|safe}}</div></div>
-                    
-                    <div class="tp-caption sfb sfb tp-resizeme"
-                    data-x="center" data-hoffset="15"
-                    data-y="center" data-voffset="100"
-                    data-speed="1500"
-                    data-start="1000"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><a href="{{poster.link}}" class="theme-btn btn-style-one">VIEW SERVICES</a></div>
-                    
-                    </li>
-                {% endif %}
-                
-                {% if poster.type3 == True %}
-                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/3.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="{{poster.image.url}}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-                    
-                    <div class="tp-caption sfr sfb tp-resizeme"
-                    data-x="right" data-hoffset="-15"
-                    data-y="center" data-voffset="-50"
-                    data-speed="1500"
-                    data-start="0"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2 class="computer-problem">{{poster.title}}</h2></div>
-                    
-                    <div class="tp-caption sfr sfb tp-resizeme"
-                    data-x="right" data-hoffset="-15"
-                    data-y="center" data-voffset="50"
-                    data-speed="1500"
-                    data-start="500"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><div class="offer text-right">{{poster.content|safe}}</div></div>
-                    
-                    <div class="tp-caption sfr sfb tp-resizeme"
-                    data-x="right" data-hoffset="-15"
-                    data-y="center" data-voffset="130"
-                    data-speed="1500"
-                    data-start="1000"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><a href="{{poster.link}}" class="theme-btn btn-style-two">GET A QUOTE</a> &ensp;&ensp; <a href="#" class="theme-btn btn-style-one">CONTACT US</a></div>
-                    
-                    
-                    </li>
-                {% endif %}
+                    {% if poster.type3 == True %}
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="images/main-slider/3.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
+                        <img src="{{poster.image.url}}"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"> 
+                        
+                        <div class="tp-caption sfr sfb tp-resizeme"
+                        data-x="right" data-hoffset="-15"
+                        data-y="center" data-voffset="-50"
+                        data-speed="1500"
+                        data-start="0"
+                        data-easing="easeOutExpo"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.3"
+                        data-endspeed="1200"
+                        data-endeasing="Power4.easeIn"><h2 class="computer-problem">{{poster.title}}</h2></div>
+                        
+                        <div class="tp-caption sfr sfb tp-resizeme"
+                        data-x="right" data-hoffset="-15"
+                        data-y="center" data-voffset="50"
+                        data-speed="1500"
+                        data-start="500"
+                        data-easing="easeOutExpo"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.3"
+                        data-endspeed="1200"
+                        data-endeasing="Power4.easeIn"><div class="offer text-right">{{poster.content|safe}}</div></div>
+                        
+                        <div class="tp-caption sfr sfb tp-resizeme"
+                        data-x="right" data-hoffset="-15"
+                        data-y="center" data-voffset="130"
+                        data-speed="1500"
+                        data-start="1000"
+                        data-easing="easeOutExpo"
+                        data-splitin="none"
+                        data-splitout="none"
+                        data-elementdelay="0.01"
+                        data-endelementdelay="0.3"
+                        data-endspeed="1200"
+                        data-endeasing="Power4.easeIn"><a href="{{poster.link}}" class="theme-btn btn-style-two">GET A QUOTE</a> &ensp;&ensp; <a href="#" class="theme-btn btn-style-one">CONTACT US</a></div>
+                        
+                        
+                        </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
-            {% endfor %}
             <div class="tp-bannertimer"></div>
         </div>
     </div>
@@ -187,7 +187,6 @@ Home
                     </div>
                     <h3>{{x.title}}</h3>
                     <div class="text">{{x.content|safe}}</div>
-                    <a class="read-more" href="{{x.link}}">Read More</a>
                 </div>
             </div>
             {% endfor %}
@@ -252,7 +251,7 @@ Home
             <div class="carousel-column col-md-6 col-sm-12 col-xs-12">
                 <ul class="single-verticle-carousel">
                     <li><img src="{{x.image1.url}}" alt="" /></li>
-                    <li><img src="{{x.image2.url}}" alt="" /></li>
+                    <li><img src="" alt="" /></li>
                     <li><img src="{{x.image3.url}}" alt="" /></li>
                 </ul>
             </div>

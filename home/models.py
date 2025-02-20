@@ -8,7 +8,7 @@ class Poster(models.Model):
     type1 = models.BooleanField(default=False , null=True , blank=True , help_text='we can change poster style with types')
     type2 = models.BooleanField(default=False , null=True , blank=True , help_text='we can change poster style with types')
     type3 = models.BooleanField(default=False , null=True , blank=True , help_text='we can change poster style with types')
-    linke = models.TextField(null=True , blank=True , help_text='links of button on posters')
+    link = models.TextField(null=True , blank=True , help_text='links of button on posters')
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:

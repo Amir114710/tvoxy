@@ -6091,9 +6091,37 @@ ul,li{
 	right: -40em!important;
 }
 
+#answer{
+	position: relative;
+	left: 5em!important;
+}
+
+#info-box-message{
+	margin-left: 3em;
+	width: 20em;
+}
+
+#info-box-message-div{
+	margin-top: -35.5em;
+}
+
 @media (min-width:200px) and (max-width:700px)  { /* smartphones, Android phones, landscape iPhone */
 	#button-tell{
 		position: relative;
 		left: 7em!important;
+	}
+
+	#answer{
+		position: relative;
+		left: 2em!important;
+	}
+
+	#info-box-message{
+		margin-left: 0em;
+		width: 20em;
+	}
+	
+	#info-box-message-div{
+		margin-top: 0em;
 	}
   }
