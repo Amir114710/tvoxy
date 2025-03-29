@@ -1,21 +1,31 @@
-from django.shortcuts import render , get_object_or_404
-from django.views.generic import View
+from django.shortcuts import render , get_object_or_404 , redirect
+from django.views.generic import View , DetailView , ListView
 from .models import *
 
-class RepairView(View):
+class RepairView(ListView):
     template_name = 'repair/repair_list.html'
-    def get(self , request):
-        repair = Repair.objects.all()
-        return render(request , self.template_name , {'repair':repair})
+    model = Repair
+    context_object_name = 'repair'
     
-class RepairDetailView(View):
+class RepairDetailView(DetailView):
     template_name = 'repair/repair_detail.html'
-    def get(self , request , id):
-        repair = get_object_or_404(Repair , id=id)
-        return render(request , self.template_name , {'repair':repair})
+    model = Repair
+    context_object_name = 'repair'
 
-class MobileRepairDetailView(View):
-    template_name = 'repair/mobile_detail.html'
-    def get(self , request , id):
-        mobile_repair = get_object_or_404(MobileRepair , id=id)
-        return render(request , self.template_name , {'mobile_repair':mobile_repair})
+class MobileRepairDetailView(DetailView):
+   template_name = 'repair/mobile_detail.html'
+   model = MobileRepair
+   context_object_name = 'mobile_repair'
+   def get_context_data(self, **kwargs):
+       context = super().get_context_data(**kwargs)
+       context['repair_list'] = Repair.objects.all()[:5]
+       context['categories'] = Category.objects.all()[:10]
+       context['mobile_repair_list'] = MobileRepair.objects.all()[:4]
+       return context
+   def post(self,request,slug):
+        user = request.user
+        mobile_repair = get_object_or_404(MobileRepair , slug=slug)
+        message = request.POST.get('message')
+        Comment.objects.create(message=message , mobile_repair=mobile_repair , user=user)
+        return redirect('repair_app:mobile_repair_detail' , slug)
+   

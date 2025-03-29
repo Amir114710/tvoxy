@@ -1,6 +1,6 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
-from django.contrib.auth.models import User
+from account.models import User
 
 class ServiceAttr(models.Model):
     title = models.CharField(max_length=850)

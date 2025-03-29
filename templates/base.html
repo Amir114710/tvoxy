@@ -16,7 +16,7 @@
             	<!--Top Left-->
             	<div class="top-left pull-left">
                     <ul class="links-nav clearfix">
-                        <li>Welcome to Big Shop</li>
+                        <li>Welcome to Tvoxy</li>
                     </ul>
                 </div>
                 
@@ -25,11 +25,7 @@
                 	<ul class="links-nav clearfix">
                         {% for x in socialmediaLinks %}
                         <li class="social-links">
-                        	<a href="{{x.facebook}}"><span class="fa fa-facebook-f"></span></a>
-                            <a href="{{x.twitter}}"><span class="fa fa-twitter"></span></a>
-                            <a href="{{x.google}}"><span class="fa fa-google-plus"></span></a>
-                            <a href="{{x.pinterest}}"><span class="fa fa-pinterest-p"></span></a>
-                        </li>
+                            <a href="{{x.youtube}}"><span class="fa fa-youtube"></span></a>
                         {% endfor %}
                     </ul>
                 </div>
@@ -43,7 +39,7 @@
             	<div class="clearfix">
                 	<!--Logo-->
                 	<div class="pull-left logo-outer">
-                    	<div class="logo"><a href="index.html"><img src="images/logo.png" alt="" title="Naples"></a></div>
+                        <a href="{% url 'home:main' %}" class="img-responsive" style="height: 5em;"><img src="{% static "images/Untitled(3).png" %}" width="150em" height="120em" alt="Naples" style="margin-top: -1.8em;margin-left: -1.5em;"></a>
                     </div>
                     
                     {% for info in call_info %}
@@ -71,8 +67,7 @@
                         <div class="upper-column info-box">
                         	<div class="icon-box"><span class="flaticon-envelope"></span></div>
                             <ul>
-                            	<li><strong>EMAIL US</strong></li>
-                                <li>{{info.gmail_us}}</li>
+                            	<a href=""><li style="margin-top: 1em;"><strong>Contact Us</strong></li></a>
                             </ul>
                         </div>
                         

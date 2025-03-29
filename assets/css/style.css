@@ -5117,8 +5117,8 @@ ul,li{
 	padding-right:20px;	
 }
 
-.product-details .basic-details .quantity-spinner,
-.cart-section input.quantity-spinner{
+.product-details .basic-details .quantity-spinner1,
+.cart-section input.quantity-spinner1{
 	line-height:24px;
 	padding:10px 15px !important;
 	height:46px !important;
@@ -5542,7 +5542,7 @@ ul,li{
 	padding-right:80px;
 }
 
-.cart-table tbody tr .qty .quantity-spinner{
+.cart-table tbody tr .qty .quantity-spinner1{
 	background:#ffffff;	
 }
 
@@ -5600,7 +5600,7 @@ ul,li{
 	vertical-align:middle;	
 }
 
-.cart-table tbody tr td .quantity-spinner{
+.cart-table tbody tr td .quantity-spinner1{
 	padding:5px 0px 5px 20px;
 	line-height:24px;
 	height:34px;
@@ -6125,3 +6125,18 @@ ul,li{
 		margin-top: 0em;
 	}
   }
+.explosion {
+	position: absolute;
+	top: -50px;
+	left: 50%;
+	transform: translateX(-50%);
+	animation: explode 1s infinite;
+}
+@keyframes explode {
+	0%, 100% {
+		transform: translateX(-50%) scale(1);
+	}
+	50% {
+		transform: translateX(-50%) scale(1.5);
+	}
+}

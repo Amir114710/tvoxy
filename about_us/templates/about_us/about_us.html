@@ -5,10 +5,10 @@ about-us
 {% endblock %}
 {% block content %}
 <!--Page Title-->
-<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+<section class="page-title" style="background-image: url({% static "images/Computer-Coding-1920-x-800-1920x800.jpg" %});">
     <div class="auto-container">
         <ul class="bread-crumb">
-            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li><a href="{% url 'about_us_app:comeing_soon' %}">Home</a></li>
             <li class="active">About Us</li>
         </ul>
         <h1>About Us</h1>
@@ -26,7 +26,7 @@ about-us
             <div class="image-column col-md-5 col-sm-12 col-xs-12" style="background-image:url({% static "images/resource/repair-1.jpg" %});">
                 <div class="text">ABOUT US</div>
                 <figure class="image-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                    <img src="{{x.image.url}}" alt="" />
+                    <img src="{{x.image.url}}" alt="" width="700em" height="500em" />
                 </figure>
             </div>
             
@@ -71,7 +71,7 @@ about-us
 <!--End Featured Style Two-->
 
 <!--Technicians Section-->
-<section class="technician-section">
+<!--<section class="technician-section">
     <div class="auto-container">
     
         <div class="sec-title-one">
@@ -82,7 +82,7 @@ about-us
         <div class="row clearfix">
 
             <!--Technicians Block-->
-            {% for x in team %}
+            <!--{% for x in team %}
             <div class="technicians-block col-md-4 col-sm-6 col-xs-12">
                 <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="image-box">
@@ -90,11 +90,11 @@ about-us
                     </div>
                     <div class="lower-content">
                         <!--Title Box-->
-                        <div class="title-box">
+                        <!--<div class="title-box">
                             <h3><a href="#">{{x.name}}</a></h3>
                         </div>
                         <!--Social Links Two-->
-                        <ul class="social-links-two">
+                        <!--<ul class="social-links-two">
                             <li><a class="fa fa-facebook-f" href="{{x.facebook}}"></a></li>
                             <li><a class="fa fa-twitter" href="{{x.twitter}}"></a></li>
                             <li><a class="fa fa-google-plus" href="{{x.google}}"></a></li>
@@ -105,7 +105,7 @@ about-us
             {% endfor %}   
         </div>
     </div>
-</section>
+</section>-->
 
 <!--sponsors style One-->
 <section class="sponsors-style-one">
@@ -113,11 +113,9 @@ about-us
         <div class="sponsors-outer">
             <!--Sponsors Carousel-->
             <ul class="sponsors-carousel">
-                <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure></li>
-                <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure></li>
-                <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure></li>
-                <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure></li>
-                <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/5.png" alt=""></a></figure></li>
+                {% for item in brand %}
+                <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{item.image.url}}" alt=""></a></figure></li>
+                {% endfor %}
             </ul>
         </div>
     </div>

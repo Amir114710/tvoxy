@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Otp Form
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">account</li>
+            <li class="active">Otp</li>
+        </ul>
+        <h1>OTP</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Feedback-->
+<div class="feedback-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--Content Side-->	
+            <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <!--Feedback Form-->
+                <div class="default-form feedback-form">
+                    <!--Sec Title Two-->
+                    <div class="sec-title-two">
+                        <h2>OTP</h2>
+                    </div>
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="row clearfix">
+                            <!--Form Group-->
+                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                <div class="field-label">code <sup>*</sup></div>
+                                <input type="number" name="code" value="" placeholder="" required>
+                            </div>
+                            <!--Form Group-->
+                            <div class="form-group text-left col-md-12 col-xs-12"><button type="submit" class="theme-btn btn-style-three">SUBMIT</button></div>
+                        </div>
+                    
+                    </form>
+                </div>
+            </div>
+            <!--Content Side-->
+        </div>
+    </div>
+</div>
+{% endblock %}

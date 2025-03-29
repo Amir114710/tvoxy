@@ -35,12 +35,20 @@ APPS = [
     'about_us.apps.AboutUsConfig',
     'repair.apps.RepairConfig',
     'service_ticket.apps.ServiceConfig',
+    'repair_cart.apps.RepairCartConfig',
+    'account.apps.AccountConfig',
+    'business.apps.BusinessConfig',
+    'shop.apps.ShopConfig',
+    'blog.apps.BlogConfig',
+    'charity.apps.CharityConfig',
 ]
 
 PACKAGES = [
     'ckeditor',
     'ckeditor_uploader',
     'star_ratings',
+    'widget_tweaks',
+    'fontawesomefree',
 ]
 
 
@@ -152,6 +160,7 @@ CKEDITOR_CONFIGS = {
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+AUTH_USER_MODEL = 'account.User'
 
 STAR_RATINGS_STAR_HEIGHT = 17
 STAR_RATINGS_RERATE = True
@@ -159,3 +168,10 @@ STAR_RATINGS_ANONYMOUS = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = '97888az@gmail.com'
+EMAIL_HOST_PASSWORD = 'aoty ggxd gqph kksm'

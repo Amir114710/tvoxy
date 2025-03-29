@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{% endblock %}
+{% block content %}
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Charity</li>
+            <li class="active">Charity Form Success</li>
+        </ul>
+        <h1>Success</h1>
+    </div>
+</section>
+{% endblock %}

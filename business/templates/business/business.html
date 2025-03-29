@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+business
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">business</li>
+        </ul>
+        <h1>Business</h1>
+    </div>
+</section>
+<!--End Page Title-->
+<section class="phone-repair-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+        
+            {% for item in about_business %}
+            <!--Image Box-->
+            <div class="image-column col-md-5 col-sm-12 col-xs-12" style="background-image:url({% static "images/resource/repair-1.jpg" %});">
+                <div class="text">About Business</div>
+                <figure class="image-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <img src="{{item.image.url}}" alt="" />
+                </figure>
+            </div>
+            
+            <!--Content Column-->
+            <div class="content-column col-md-7 col-sm-12 col-xs-12">
+                <div class="inner-box">
+                    <div class="sec-title-two">
+                        <h2>{{item.title}}</h2>
+                        <div class="text">
+                            <p>{{item.content|safe}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+
+<!--Services Style Three-->
+<section class="services-style-three change-background">
+    <div class="auto-container">
+        <!--Sec Title One-->
+        <div class="sec-title-one">
+            <h2>OUR BUSINESS</h2>
+            <div class="text">Overcome faithful endless salvation enlightenment salvation overcome pious merciful<br>ascetic madness holiest joy passion zarathustra.</div>
+        </div>
+    
+        <div class="row clearfix">
+            <!--Services Block Four-->
+            {% for item in attr %}
+            <div class="services-block-four col-md-4 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <!--Upper Box-->
+                    <div class="upper-box clearfix">
+                        <div class="icon-box">
+                            <span class="{{item.image}}"></span>
+                        </div>
+                        <h3><a href="#">{{item.title}}</a></h3>
+                    </div>
+                    <div class="text">{{item.content|safe}}</div>
+                    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="testimonial-style-two" id="service-section-1">
+    <div class="auto-container">
+        <!--Section Title One-->
+        <div class="sec-title-one">
+            <h2>Tell Us</h2>
+            <div class="text">Tell us your problem so we can solve it properly and accurately.</div>
+        </div>
+        <a href="{% url 'business_app:business_form' %}" class="read-more theme-btn btn-style-two" id="button-tell">Read More</a>
+    </div>
+</section>
+{% endblock %}

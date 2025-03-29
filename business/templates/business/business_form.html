@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+business
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">business</li>
+            <li class="active">Business Form</li>
+        </ul>
+        <h1>Business Form</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Feedback-->
+<div class="feedback-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--Content Side-->	
+            <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <!--Feedback Form-->
+                <div class="default-form feedback-form">
+                    <!--Sec Title Two-->
+                    <div class="sec-title-two">
+                        <h2>Business Form</h2>
+                    </div>
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="row clearfix">
+                            <!--Form Group-->
+                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                <div class="field-label">First Name <sup>*</sup></div>
+                                <input type="text" name="first_name" value="" placeholder="" required>
+                            </div>
+                            <!--Form Group-->
+                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                <div class="field-label">Last Name <sup>*</sup></div>
+                                <input type="text" name="last_name" value="" placeholder="" required>
+                            </div>
+                            <!--Form Group-->
+                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                <div class="field-label">E-Mail <sup>*</sup></div>
+                                <input type="email" name="email" value="" placeholder="" required>
+                            </div>
+                            <!--Form Group-->
+                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                <div class="field-label">Phone <sup>*</sup></div>
+                                <input type="text" name="phone" value="" placeholder="" required>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                <div class="field-label">Company Name <sup>*</sup></div>
+                                <input type="text" name="company_name" value="" placeholder="" required>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                <div class="field-label">Company Type <sup>*</sup></div>
+                                <input type="text" name="company_type" value="" placeholder="" required>
+                            </div>
+                            
+                            <!--Form Group-->
+                            <div class="form-group col-lg-12 col-sm-12 col-xs-12">
+                                <div class="field-label">address <sup>*</sup></div>
+                                <textarea name="address" placeholder=""></textarea>
+                            </div>
+                            <div class="form-group col-lg-12 col-sm-12 col-xs-12">
+                                <div class="field-label">discription <sup>*</sup></div>
+                                <textarea name="discription" placeholder=""></textarea>
+                            </div>
+                            <!--Form Group-->
+                            <div class="form-group text-left col-md-12 col-xs-12"><button type="submit" class="theme-btn btn-style-three">SUBMIT</button></div>
+                        </div>
+                    
+                    </form>
+                </div>
+            </div>
+            <!--Content Side-->
+        </div>
+    </div>
+</div>
+{% endblock %}

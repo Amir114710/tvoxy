@@ -4,4 +4,4 @@ from .models import *
 admin.site.register(Category)
 admin.site.register(Repair)
 admin.site.register(MobileRepair)
-admin.site.register(Comments)
+admin.site.register(Comment)

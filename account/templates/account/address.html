@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+address
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url(images/background/3.jpg);">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Shop</li>
+        </ul>
+        <h1> address</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Checkout Page-->
+<div class="checkout-page">
+    <div class="auto-container">
+        <!--Billing Details-->
+        <div class="billing-details">
+            <div class="shop-form">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="row clearfix">
+                        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+            
+                            <div class="default-title"><h2>Billing Details</h2></div>
+                    
+                            <div class="row clearfix">
+                                
+                                <!--Form Group-->
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                    <div class="field-label">Fullname <sup>*</sup></div>
+                                    {{form.fullname|attr:'class:form-control'|attr:'placeholder:Fullname:'}}
+                                </div>
+                                
+                                <!--Form Group-->
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                    <div class="field-label">Email <sup>*</sup></div>
+                                    {{form.email|attr:'class:form-control'|attr:'placeholder:email :'}}
+                                </div>
+                                
+                                <!--Form Group-->
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <div class="field-label">phone <sup>*</sup></div>
+                                    {{form.phone|attr:'class:form-control'|attr:'placeholder:phone_number  :'}}
+                                </div>
+                                
+                                <!--Form Group-->
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <div class="field-label">Address <sup>*</sup></div>
+                                    {{form.address|attr:'class:form-control'|attr:'placeholder:address :'}}
+                                </div>
+                                
+                                <!--Form Group-->
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                    <div class="field-label">Postcode / Zip <sup>*</sup></div>
+                                    {{form.postal_code|attr:'class:form-control'|attr:'placeholder:postal code:'}}
+                                </div>
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <button type="submit" class="theme-btn btn-style-one"> submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                             
+                </form>
+            </div>
+        </div><!--End Billing Details-->
+    </div>
+</div>
+{% endblock %}

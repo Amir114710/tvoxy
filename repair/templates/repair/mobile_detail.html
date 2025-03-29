@@ -1,342 +1,216 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-mobile_detail
+service_detail
 {% endblock %}
 {% block content %}
-<!--Page Title-->
-<section class="page-title" style="background-image: url(images/background/3.jpg);">
-    <div class="auto-container">
-        <ul class="bread-crumb">
-            <li><a href="index.html">Home</a></li>
-            <li class="active">Shop</li>
-        </ul>
-        <h1>Shop Detail</h1>
-    </div>
-</section>
-<!--End Page Title-->
+    <!--Page Title-->
+    <section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    	<div class="auto-container">
+        	<ul class="bread-crumb">
+                <li><a href="{% url 'home:main' %}">Home</a></li>
+                <li class="active">Repair Detail</li>
+            </ul>
+        	<h1>Repair Detail</h1>
+        </div>
+    </section>
+    <!--End Page Title-->
+    
+    <!--Sidebar Page / Shop Container-->
+    <div class="sidebar-page-container shop-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+				
+                <!--Content Side-->
+                <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
-<!--Sidebar Page / Shop Container-->
-<div class="sidebar-page-container shop-container">
-    <div class="auto-container">
-        <div class="row clearfix">
-            
-            <!--Content Side-->
-            <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <!--Shop Single-->
+                    <div class="shop-single shop-page">
 
-                <!--Shop Single-->
-                <div class="shop-single shop-page">
-
-                    <!--Product Details Section-->
-                    <section class="product-details">
-                        <!--Basic Details-->
-                        <div class="basic-details">
-                            <div class="row clearfix">
-                                <div class="image-column col-md-6 col-sm-6 col-xs-12">
-                                    <!--<figure class="image-box"><img src="images/resource/products/image-9.jpg" alt=""></figure>-->
-                                    <div class="carousel-outer wow fadeInLeft">
-                
-                                        <ul class="image-carousel">
-                                            <li><a href="images/resource/products/shop-image-1.jpg" class="lightbox-image" title="Image Caption Here"><img src="images/resource/products/shop-image-1.jpg" alt=""></a></li>
-                                            <li><a href="images/resource/products/shop-image-1.jpg" class="lightbox-image" title="Image Caption Here"><img src="images/resource/products/shop-image-1.jpg" alt=""></a></li>
-                                            <li><a href="images/resource/products/shop-image-1.jpg" class="lightbox-image" title="Image Caption Here"><img src="images/resource/products/shop-image-1.jpg" alt=""></a></li>
-                                            <li><a href="images/resource/products/shop-image-1.jpg" class="lightbox-image" title="Image Caption Here"><img src="images/resource/products/shop-image-1.jpg" alt=""></a></li>
-                                            <li><a href="images/resource/products/shop-image-1.jpg" class="lightbox-image" title="Image Caption Here"><img src="images/resource/products/shop-image-1.jpg" alt=""></a></li>
-                                            <li><a href="images/resource/products/shop-image-1.jpg" class="lightbox-image" title="Image Caption Here"><img src="images/resource/products/shop-image-1.jpg" alt=""></a></li>
-                                        </ul>
-                                        
-                                        <ul class="thumbs-carousel">
-                                            <li><img src="images/resource/products/shop-thumb-1.jpg" alt=""></li>
-                                            <li><img src="images/resource/products/shop-thumb-2.jpg" alt=""></li>
-                                            <li><img src="images/resource/products/shop-thumb-3.jpg" alt=""></li>
-                                            <li><img src="images/resource/products/shop-thumb-1.jpg" alt=""></li>
-                                            <li><img src="images/resource/products/shop-thumb-2.jpg" alt=""></li>
-                                            <li><img src="images/resource/products/shop-thumb-3.jpg" alt=""></li>
-                                        </ul>
+                        <!--Product Details Section-->
+                        <section class="product-details">
+                            <!--Basic Details-->
+                            <div class="basic-details">
+                                <div class="row clearfix">
+                                    <div class="image-column col-md-6 col-sm-6 col-xs-12">
+                                        <!--<figure class="image-box"><img src="images/resource/products/image-9.jpg" alt=""></figure>-->
+                                        <div class="carousel-outer wow fadeInLeft">
+                    
+                                            <ul class="image-carousel">
+                                                <li><a href="{{mobile_repair.image.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{ mobile_repair.image.url }}" alt=""></a></li>
+                                            </ul>
+                                            
+                                        </div>
                                         
                                     </div>
+                                    <div class="info-column col-md-6 col-sm-6 col-xs-12">
                                     
-                                </div>
-                                <div class="info-column col-md-6 col-sm-6 col-xs-12">
-                                
-                                    <div class="details-header">
-                                        <h4>JBL EARPHONES</h4>
-                                        <div class="item-price">$28.00</div>
-                                    </div>
-                                    <!--Text-->
-                                    <div class="text">
-                                        <p>God god will hatred sea good evil morality decieve virtues. Chris-tian endless society strong pinnacle. Oneself ascetic intentions holiest pious sea gains law justice disgust disgust dead love transvaluation. Intentions insofar merciful madness of eternal-return spirit against chaos. Victorious virtues god.</p>
-                                        <div class="stock">In Stock</div>
-                                    </div>
-                                    <!--Item Quantity-->
-                                    <div class="other-options clearfix">
-                                        <div class="item-quantity"><input class="quantity-spinner" type="text" value="2" name="quantity"></div>
-                                        <button type="button" class="theme-btn btn-style-one add-to-cart">Add To Cart </button>
-                                    </div>
-                                    <!--Item Meta-->
-                                    <ul class="item-meta">
-                                        <li>Categories: <a href="#">Headphone</a> , <a href="#">Mobile Accessories</a></li>
-                                    </ul>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <!--Basic Details-->
-                        
-                        <!--Product Info Tabs-->
-                        <div class="product-info-tabs">
-
-                            <!--Product Tabs-->
-                            <div class="prod-tabs" id="product-tabs">
-
-                                <!--Tab Btns-->
-                                <div class="tab-btns clearfix">
-                                    <a href="#prod-description" class="tab-btn active-btn">description</a>
-                                    <a href="#prod-reviews" class="tab-btn">Reviews</a>
-                                </div>
-
-                                <!--Tabs Container-->
-                                <div class="tabs-container">
-
-                                    <!--Tab / Active Tab-->
-                                    <div class="tab active-tab" id="prod-description">
-                                        <h3>Product Description</h3>
-                                        <div class="content">
-                                            <p>Transvaluation evil spirit philosophy ubermensch grandeur eternal-return passion gains prejudice disgust hope. Chaos ultimate mountains decrepit derive eternal-return joy salvation revaluation disgust reason.</p>
-                                            <p>God god will hatred sea good evil morality decieve virtues. Christian endless society strong pinnacle. Oneself ascetic intentions holiest pious sea gains law justice disgust disgust dead love transvaluation. Intentions insofar merciful madness of eternal-return spirit against chaos. Victorious virtues god. Enlightenment prejudice play mountains passion disgust gains. Self reason ubermensch against contradict abstract moral enlightenment gains fearful prejudice ubermensch. Marvelous free prejudice sea deceptions.</p>
+                                        <div class="details-header">
+                                            <h4>{{mobile_repair.title}}</h4>
+                                            <div class="item-price">{{mobile_repair.price}}</div>
                                         </div>
-                                    </div>
-
-                                    <!--Tab-->
-                                    <div class="tab" id="prod-reviews">
-                                        <h3>3 Reviews Found</h3>
-
-                                        <!--Reviews Container-->
-                                        <div class="reviews-container">
-
-                                            <!--Reviews-->
-                                            <article class="review-box clearfix">
-                                                <figure class="rev-thumb"><img src="images/resource/author-thumb-1.jpg" alt=""></figure>
-                                                <div class="rev-content">
-                                                    <div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star-o"></span></div>
-                                                    <div class="rev-info">Admin – April 03, 2016: </div>
-                                                    <div class="rev-text"><p>Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis</p></div>
-                                                </div>
-                                            </article>
-
-                                            <article class="review-box clearfix">
-                                                <figure class="rev-thumb"><img src="images/resource/author-thumb-2.jpg" alt=""></figure>
-                                                <div class="rev-content">
-                                                    <div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star-o"></span> <span class="fa fa-star-o"></span></div>
-                                                    <div class="rev-info">Ahsan – April 01, 2016: </div>
-                                                    <div class="rev-text"><p>Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis</p></div>
-                                                </div>
-                                            </article>
-
-                                            <article class="review-box clearfix">
-                                                <figure class="rev-thumb"><img src="images/resource/author-thumb-1.jpg" alt=""></figure>
-                                                <div class="rev-content">
-                                                    <div class="rating"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></div>
-                                                    <div class="rev-info">Sara – March 31, 2016: </div>
-                                                    <div class="rev-text"><p>Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis</p></div>
-                                                </div>
-                                            </article>
-
+										<!--Text-->
+                                        <div class="text">
+                                            <p>{{mobile_repair.little_content|safe}}</p>
+                                            <div class="stock">{% if mobile_repair.on_sale %}On Sale{% endif %}</div>
                                         </div>
-
-                                        <!--Add Review-->
-                                        <div class="add-review">
-                                            <h3>Add a Review</h3>
-
-                                            <form method="post" action="shop-single.html">
-                                                <div class="row clearfix">
-                                                    <div class="form-group col-lg-6 col-md-12 col-xs-12">
-                                                        <label>Name *</label>
-                                                        <input type="text" name="name" value="" placeholder="" required>
-                                                    </div>
-                                                    <div class="form-group col-lg-6 col-md-12 col-xs-12">
-                                                        <label>Email *</label>
-                                                        <input type="email" name="email" value="" placeholder="" required>
-                                                    </div>
-                                                    <div class="form-group col-lg-6 col-md-12 col-xs-12">
-                                                        <label>Website *</label>
-                                                        <input type="text" name="website" value="" placeholder="" required>
-                                                    </div>
-                                                    <div class="form-group col-lg-6 col-md-12 col-xs-12">
-                                                        <label>Rating </label>
-                                                        <div class="rating">
-                                                            <a href="#" class="rate-box" title="1 Out of 5"><span class="fa fa-star"></span></a>
-                                                            <a href="#" class="rate-box" title="2 Out of 5"><span class="fa fa-star"></span> <span class="fa fa-star"></span></a>
-                                                            <a href="#" class="rate-box" title="3 Out of 5"><span class="fa fa-star"></span> <span class="fa fa-star"> </span> <span class="fa fa-star"></span></a>
-                                                            <a href="#" class="rate-box" title="4 Out of 5"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></a>
-                                                            <a href="#" class="rate-box" title="5 Out of 5"><span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                                        <label>Your Review</label>
-                                                        <textarea name="review-message"></textarea>
-                                                    </div>
-                                                    <div class="form-group text-right col-md-12 col-sm-12 col-xs-12">
-                                                        <button type="button" class="theme-btn btn-style-one">Add Review</button>
-                                                    </div>
-                                                </div>
+										<!--Item Quantity-->
+                                        <div class="other-options clearfix">
+                                            <form method="post" action="{% url 'repair_cart_app:cart_add' mobile_repair.id %}">
+                                                {% csrf_token %}
+                                                <input type="number" id="inputQuantitySelector" class="form-control" aria-live="polite" data-bs-step="counter" name="quantity" title="quantity" value="0" min="0" max="10" step="1" data-bs-round="0" aria-label="Quantity selector">
+                                                <br>
+                                                <button type="submit" class="theme-btn btn-style-one add-to-cart">Add To Cart </button>
                                             </form>
                                         </div>
-
-
+                                        
+										<!--Item Meta-->
+                                        <ul class="item-meta">
+                                            <li>
+                                                Categories: {% for x in mobile_repair.categories.all %}
+                                                <a href="#">{{x.title}}</a>
+                                                {% endfor %}
+                                            </li>
+                                        </ul>
+                                        
                                     </div>
-
                                 </div>
                             </div>
+                            <!--Basic Details-->
+							
+                            <!--Product Info Tabs-->
+                            <div class="product-info-tabs">
 
-                        </div>
-                    </section>
-                    
-                </div>
+                                <!--Product Tabs-->
+                                <div class="prod-tabs" id="product-tabs">
 
-            </div>
-            <!--Content Side-->
-            
-            <!--Sidebar-->	
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <aside class="sidebar">
-                
-                    <!-- Search Form -->
-                    <div class="sidebar-widget search-box">
-                        <form method="post" action="blog.html">
-                            <div class="form-group">
-                                <input type="search" name="search-field" value="" placeholder="Search">
-                                <button type="submit"><span class="icon fa fa-search"></span></button>
+                                    <!--Tab Btns-->
+                                    <div class="tab-btns clearfix">
+                                        <a href="#prod-description" class="tab-btn active-btn">description</a>
+                                        <a href="#prod-reviews" class="tab-btn">Reviews</a>
+                                    </div>
+
+                                    <!--Tabs Container-->
+                                    <div class="tabs-container">
+
+                                        <!--Tab / Active Tab-->
+                                        <div class="tab active-tab" id="prod-description">
+                                            <h3>Repair Description</h3>
+                                            <div class="content">
+                                                <p>{{mobile_repair.content|safe}}</p>
+                                            </div>
+                                        </div>
+
+                                        <!--Tab-->
+                                        <div class="tab" id="prod-reviews">
+                                            <h3>3 Reviews Found</h3>
+
+                                            <!--Reviews Container-->
+                                            <div class="reviews-container">
+
+                                                <!--Reviews-->
+                                                {% for item in mobile_repair.comment.all %}
+                                                <article class="review-box clearfix">
+                                                    <figure class="rev-thumb"><img src="{% static "images/resource/author-thumb-1.jpg" %}" alt=""></figure>
+                                                    <div class="rev-content">
+                                                        <div class="rev-info">{{item.user.username}} – {{item.created}}: </div>
+                                                        <div class="rev-text"><p>{{item.message}}</p></div>
+                                                    </div>
+                                                </article>
+                                                {% endfor %}
+
+                                            </div>
+
+                                            <!--Add Review-->
+                                            <div class="add-review">
+                                                <h3>Add a Review</h3>
+
+                                                <form method="post" action="">
+                                                    {% csrf_token %}
+                                                    <div class="row clearfix">
+                                                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                                            <label>Your Review</label>
+                                                            <textarea name="message"></textarea>
+                                                        </div>
+                                                        <div class="form-group text-right col-md-12 col-sm-12 col-xs-12">
+                                                            <button type="submit" class="theme-btn btn-style-one">Add Review</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
                             </div>
-                        </form>
+                        </section>
                         
                     </div>
-                    
-                    
-                    <!-- Product Category -->
-                    <div class="sidebar-widget product-category wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="sidebar-title"><h2>Product Categories</h2></div>
-                            <ul class="list">
-                                <li><a href="#">Earphones</a></li>
-                                <li><a href="#">Laptop & Notebook</a></li>
-                                <li><a href="#">Printer & Inks</a></li>
-                                <li><a href="#">Chargers</a></li>
-                                <li><a href="#">Smartphones</a></li>
-                                <li><a href="#">Computer Accessories</a></li>
-                            </ul>
-                    </div>
-                    
-                    
-                    <!-- Products Widget -->
-                    <div class="sidebar-widget products-widget wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="sidebar-title"><h2>Products</h2></div>
-                        
-                        <article class="post">
-                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-1.jpg" alt=""></a></figure>
-                            <h4><a href="blog-single.html">Samsung Galaxy s7 Edge</a></h4>
-                            <div class="price">$ 395.00</div>
-                        </article>
-                        
-                        <article class="post">
-                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-2.jpg" alt=""></a></figure>
-                            <h4><a href="blog-single.html">Beats Headphone</a></h4>   
-                            <div class="price">$ 192.00</div>                             
-                        </article>
-                        
-                        <article class="post">
-                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-3.jpg" alt=""></a></figure>
-                            <h4><a href="blog-single.html">BX 600</a></h4>
-                            <div class="price">$ 45.00</div>
-                        </article>
-                        
-                        <article class="post">
-                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-4.jpg" alt=""></a></figure>
-                            <h4><a href="blog-single.html">Epson Printer</a></h4>
-                            <div class="price">$ 115.00</div>                                
-                        </article>
-                        
-                        <article class="post">
-                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-5.jpg" alt=""></a></figure>
-                            <h4><a href="blog-single.html">Echo Headphones</a></h4>
-                            <div class="price">$ 98.00</div>
-                        </article>
-                        
-                    </div>
-                    
-                </aside>
-            </div>
-            <!--Sidebar-->  
 
+                </div>
+                <!--Content Side-->
+				
+                <!--Sidebar-->	
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <aside class="sidebar">                        
+                        <!-- Product Category -->
+                        <div class="sidebar-widget product-category wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <div class="sidebar-title"><h2>Repair Categories</h2></div>
+                            	<ul class="list">
+                                    {% for x in categories %}
+                                        <li><a href="#">{{x.title}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                        </div>
+                        
+                        
+                        <!-- Products Widget -->
+                        <div class="sidebar-widget products-widget wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                            <div class="sidebar-title"><h2>Repair</h2></div>
+                            {% for item in repair_list %}
+                            <article class="post">
+                            	<figure class="post-thumb"><a href="{% url 'repair_app:repair_detail' item.pk %}"><img src="{{item.image.url}}" alt="" width="67em"></a></figure>
+                                <h4><a href="{% url 'repair_app:repair_detail' item.pk %}">{{item.title}}</a></h4>
+                                <div class="price"><a href="{% url 'repair_app:repair_detail' item.pk %}">Read More</a></div>                                
+                            </article>
+                            {% endfor %}
+                        </div>
+                        
+                    </aside>
+                </div>
+                <!--Sidebar-->  
+
+            </div>
+            
+            <div class="row clearfix">
+            	<div class="product-title col-md-12">
+                	<h4>Related MobileRepair</h4>
+                </div>
+            	
+                <!--Shop Item-->
+                <div class="shop-item col-md-3 col-sm-6 col-xs-12">
+                    {% for x in mobile_repair_list %}
+                        {% if x.categories.first == mobile_repair.categories.first %}
+                            {% if x.title != mobile_repair.title %}
+                                <div class="inner-box">
+                                    <figure class="image-box">
+                                        <a href="{% url 'repair_app:mobile_repair_detail' x.pk %}"><img src="{{x.image.url}}" alt="" /></a>
+                                    </figure>
+                                    <!--Lower Content-->
+                                    <div class="lower-content">
+                                        <h3><a href="{% url 'repair_app:mobile_repair_detail' x.pk %}">{{x.title}}</a></h3>
+                                        <div class="price">{{x.price}}</div>
+                                        <a href="{% url 'repair_app:mobile_repair_detail' x.pk %}" class="cart-btn theme-btn btn-style-two">Read More</a>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-        
-        <div class="row clearfix">
-            <div class="product-title col-md-12">
-                <h4>Related Products</h4>
-            </div>
-            
-            <!--Shop Item-->
-            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <a href="shop-single.html"><img src="images/resource/products/image-5.png" alt="" /></a>
-                    </figure>
-                    <!--Lower Content-->
-                    <div class="lower-content">
-                        <h3><a href="shop-single.html">XBOX 1 and PS4</a></h3>
-                        <div class="price">$125.00</div>
-                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!--Shop Item-->
-            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <a href="shop-single.html"><img src="images/resource/products/image-6.png" alt="" /></a>
-                        <div class="product-tag">Sale</div>
-                    </figure>
-                    <!--Lower Content-->
-                    <div class="lower-content">
-                        <h3><a href="shop-single.html">APPLE MOUSE</a></h3>
-                        <div class="price">$30.00</div>
-                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!--Shop Item-->
-            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <a href="shop-single.html"><img src="images/resource/products/image-7.png" alt="" /></a>
-                    </figure>
-                    <!--Lower Content-->
-                    <div class="lower-content">
-                        <h3><a href="shop-single.html">SENHEISER WIRED HEADSET</a></h3>
-                        <div class="price">$12.00</div>
-                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!--Shop Item-->
-            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <a href="shop-single.html"><img src="images/resource/products/image-8.png" alt="" /></a>
-                    </figure>
-                    <!--Lower Content-->
-                    <div class="lower-content">
-                        <h3><a href="shop-single.html">HP NOTEBOOK</a></h3>
-                        <div class="price">$542.00</div>
-                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-        
     </div>
-</div>
 {% endblock %}

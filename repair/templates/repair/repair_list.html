@@ -25,14 +25,13 @@ repair
             <div class="shop-item col-md-3 col-sm-6 col-xs-12">
                 <div class="inner-box">
                     <figure class="image-box">
-                        <a href="{% url 'repair_app:repair_detail' x.id %}"><img src="{{x.image.url}}" alt="" /></a>
+                        <a href="{% url 'repair_app:repair_detail' x.pk %}"><img src="{{x.image.url}}" alt="" /></a>
                         <div class="product-tag">Sale</div>
                     </figure>
                     <!--Lower Content-->
                     <div class="lower-content">
-                        <h3><a href="{% url 'repair_app:repair_detail' x.id %}">{{x.title}}</a></h3>
-                        <div class="price">{{x.price}}</div>
-                        <a href="{% url 'repair_app:repair_detail' x.id %}" class="cart-btn theme-btn btn-style-two">Read More</a>
+                        <h3><a href="{% url 'repair_app:repair_detail' x.pk %}">{{x.title}}</a></h3>
+                        <a href="{% url 'repair_app:repair_detail' x.pk %}" class="cart-btn theme-btn btn-style-two">Read More</a>
                     </div>
                 </div>
             </div>

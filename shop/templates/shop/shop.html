@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+shop
+{% endblock %}
+{% block content %}
+    <!--Page Title-->
+    <section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    	<div class="auto-container">
+        	<ul class="bread-crumb">
+                <li><a href="{% url 'home:main' %}">Home</a></li>
+                <li class="active">Shop</li>
+            </ul>
+        	<h1>Shop</h1>
+        </div>
+    </section>
+    <!--End Page Title-->
+    
+    <!--Shop Section-->
+    <section class="shop-section shop-page">
+    	<div class="auto-container">
+        	<!--Sort By-->
+            <div class="items-sorting">
+                <div class="row clearfix">
+                    <div class="results-column col-md-6 col-sm-6 col-xs-12">
+                        <h4>Showing 1–8 of 23 results</h4>
+                    </div>
+                    <div class="select-column pull-right col-md-3 col-sm-4 col-xs-12">
+                        <div class="form-group">
+                            <select name="sort-by">
+                                <option>Default Sorting</option>
+                                <option>By Order</option>
+                                <option>By Price</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        
+        	<div class="row clearfix">
+                <!--Shop Item-->
+                {% for x in products %}
+                <div class="shop-item col-md-3 col-sm-6 col-xs-12">
+                	<div class="inner-box">
+                    	<figure class="image-box">
+                        	<a href=""><img src="{{x.main_image.url}}" alt="" /></a>
+                            {% if x.on_sale == True %}
+                            <div class="product-tag">Sale</div>
+                            {% endif %}
+                        </figure>
+                        <!--Lower Content-->
+                        <div class="lower-content">
+                        	<h3><a href="shop-single.html">{{x.title}}</a></h3>
+                            <div class="price">${{x.price}}</div>
+                            <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+            
+            <div class="text-center">
+            	<!-- Styled Pagination -->
+                <div class="styled-pagination">
+                    <ul>
+                        {% if page_obj.has_previous %}
+                        <li><a class="next" href="?page={{page_obj.previous_number}}"><span class="fa fa-angle-left"></span></a></li>
+                        {% endif %}
+                        {% for i in page_obj.page_range %}
+                            {% if page_obj.number == i %}
+                            <li class="active"><a href="?page={{i}}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">{{ i }}</a></li>
+                            {% else %}
+                            <li><a href="?page={{i}}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">{{ i }}</a></li>
+                            {% endif %}
+                      {% endfor %}
+                        <!--<li><a href="#" class="active">{{page_obj.number}}</a></li>-->
+                        {% if page_obj.has_next %}
+                        <li><a class="next" href="?page={{page_obj.next_number}}"><span class="fa fa-angle-right"></span></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+{% endblock %}

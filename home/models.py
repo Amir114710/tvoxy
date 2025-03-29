@@ -19,7 +19,7 @@ class Poster(models.Model):
 
 class CallInformation(models.Model):
     opening_time = models.CharField(max_length=250)
-    call_number = models.BigIntegerField(default=0)
+    call_number = models.CharField(max_length=250)
     gmail_us = models.EmailField(null=True , blank=True)
 
     def __str__(self) -> str:
@@ -30,6 +30,7 @@ class SocialMediaLinks(models.Model):
     google = models.TextField(null=True , blank=True , help_text='google_link')
     facebook = models.TextField(null=True , blank=True , help_text='facebook_link')
     twitter = models.TextField(null=True , blank=True , help_text='twitter_link')
+    youtube = models.TextField(null=True , blank=True , help_text='youtube_link')
 
     def __str__(self) -> str:
         return self.google

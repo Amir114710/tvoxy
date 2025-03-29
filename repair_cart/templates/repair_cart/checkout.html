@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+checkout
+{% endblock %}
+{% block content %}
+    <!--Page Title-->
+    <section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    	<div class="auto-container">
+        	<ul class="bread-crumb">
+                <li><a href="{% url 'home:main' %}">Home</a></li>
+                <li class="active">Shop</li>
+            </ul>
+        	<h1>Check Out</h1>
+        </div>
+    </section>
+    
+    <!--Checkout Page-->
+    <div class="checkout-page">
+        <div class="auto-container">
+            <!--Billing Details-->
+            <div class="billing-details">
+                <div class="shop-form">
+                    <form method="post" action="{% url 'repair_cart_app:apply_address' order.id %}">
+                        {% csrf_token %}
+                        <div class="row clearfix">
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                
+                                <div class="default-title"><h2>Billing Details</h2></div>
+                        
+                                <div class="row clearfix">
+                                    <!--Form Group-->
+                                    <div class="form-group country col-md-12 col-sm-12 col-xs-12">
+                                        <div class="field-label">Addresses <sup>*</sup> </div>
+                                        {% if request.user.addresses.all %}
+                                        <select name="adrres">
+                                            {% for address in request.user.addresses.all %}
+                                            <option>{{address.address}} ---- {{address.phone}}</option>
+                                            {% endfor %}
+                                        </select>
+                                        {% else %}
+                                        <div class="form-group">
+                                            <a href="{% url 'account:add_address' %}?next={% url 'repair_cart_app:order_detail' order.id %}"><button type="button" class="theme-btn btn-style-one">add address </button></a>
+                                        </div>
+                                        {% endif %}
+                                        <br>
+                                        <div class="form-group">
+                                            <a href="{% url 'account:add_address' %}?next={% url 'repair_cart_app:order_detail' order.id %}"><button type="button" class="theme-btn btn-style-one">add new address </button></a>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="theme-btn btn-style-one">submit </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                             
+                    </form>
+                    
+                </div>
+                
+            </div><!--End Billing Details-->
+            
+            
+            <div class="default-title"><h2>Your Order</h2></div>
+            
+            <!--Cart Outer-->
+            <div class="cart-outer cart-section checkbox-cart">
+                <div class="table-outer">
+                    <table class="cart-table">
+                        <thead class="cart-header">
+                            <tr>
+                                <th class="prod-column">PRODUCT IMAGE</th>
+                                <th>PRODUCT TITLE</th>
+                                <th class="price">Price</th>
+                                <th>QUANTITY</th>
+                                <th>Total</th>
+                                
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            {% for x in order.items.all %}
+                            <tr>
+                                <td class="prod-column">
+                                    <div class="column-box">
+                                        <figure class="prod-thumb"><a href="#"><img src="{{x.mobile_repair.image.url}}" alt=""></a></figure>
+                                    </div>
+                                </td>
+                                <td class="product-name">{{x.mobile_repair.title}}</td>
+                                <td class="price">${{x.mobile_repair.price}}</td>
+                                <td class="qty">{{x.quantity}}</td>
+                                <td class="sub-total">${{order.total_price}}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="cart-options clearfix">
+                    <div class="pull-left">
+                       <form method="post" action="{% url 'repair_cart_app:apply_discount' order.id %}">
+                        {% csrf_token %}
+                        <div class="apply-coupon clearfix">
+                            <div class="form-group clearfix">
+                                <input type="text" name="discount_code" value="" placeholder="Coupon Code">
+                            </div>
+                            <div class="form-group clearfix">
+                                <button type="submit" class="theme-btn btn-style-one">Apply Coupon</button>
+                            </div>
+                        </div>
+                       </form>
+                    </div>
+                    
+                    <div class="pull-right">
+                        <button type="button" class="theme-btn btn-style-three">Update Cart</button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!--End Cart Outer-->
+            
+            
+            
+            <!--Place Order-->
+            <div class="place-order">
+                <div class="default-title"><h2>Payment Method</h2></div>
+                
+                
+                <!--Payment Options-->
+                <div class="payment-options">
+                    <ul>
+                        <li>
+                            <div class="radio-option">
+                                <input type="radio" name="payment-group" id="payment-1" checked>
+                                <label for="payment-1"><strong>Cheque Payment</strong><span class="small-text">Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</span></label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="radio-option">
+                                <input type="radio" name="payment-group" id="payment-2">
+                                <label for="payment-2"><strong>Direct Bank Transfer</strong></label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="radio-option">
+                                <input type="radio" name="payment-group" id="payment-3">
+                                <label for="payment-3"><strong>Paypal</strong></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <button type="button" class="theme-btn btn-style-one place-order">Place Order</button>
+                
+            </div><!--End Place Order-->
+            
+        </div>
+    </div>
+{% endblock %}
