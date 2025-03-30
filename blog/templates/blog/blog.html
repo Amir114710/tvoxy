@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+blog
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url(images/background/3.jpg);">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Blog</li>
+        </ul>
+        <h1>Blog</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!-- Blog Section / Style Two -->
+<section class="blog-section">
+    <div class="auto-container">
+    
+        <div class="row clearfix">
+            <!--News Block-->
+            {% for x in articles %}
+            <div class="news-block style-two col-md-6 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <!--Image Box-->
+                    <div class="image-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <a href="{% url 'blog:article_detail' x.slug %}"><img src="{{x.image.url}}" alt="" /></a>
+                    </div>
+                    <!--Lower Content-->
+                    <div class="lower-content">
+                        <h3><a href="{% url 'blog:article_detail' x.slug %}">{{x.title}}</a></h3>
+                        <ul class="list">
+                            <li><span class="icon flaticon-avatar"></span> Posted by <span class="posted">{{x.author.email}}</span></li>
+                            <li><span class="icon flaticon-business"></span>{{x.created}}</li>
+                        </ul>
+                        <div class="text">{{x.little_discription|safe}}</div>
+                        <a class="read-more" href="{% url 'blog:article_detail' x.slug %}">Read More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!--Styled Pagination-->
+        <div class="styled-pagination">
+            <ul>
+                {% if page_obj.has_previous %}
+                <li><a class="next" href="?page={{page_obj.previous_number}}"><span class="fa fa-angle-left"></span></a></li>
+                {% endif %}
+                {% for i in page_obj.page_range %}
+                    {% if page_obj.number == i %}
+                    <li class="active"><a href="?page={{i}}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">{{ i }}</a></li>
+                    {% else %}
+                    <li><a href="?page={{i}}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">{{ i }}</a></li>
+                    {% endif %}
+              {% endfor %}
+                <!--<li><a href="#" class="active">{{page_obj.number}}</a></li>-->
+                {% if page_obj.has_next %}
+                <li><a class="next" href="?page={{page_obj.next_number}}"><span class="fa fa-angle-right"></span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+        
+    </div>
+</section>
+{% endblock %}

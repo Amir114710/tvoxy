@@ -20,8 +20,8 @@
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
                                 <li class="{% if request.resolver_match.url_name == 'main' %}current{% endif %}"><a href="{% url 'home:main' %}">Home</a></li>
-                                <li class="{% if request.resolver_match.url_name == 'shop_main' %}current{% endif %}"><a href="{% url 'shop:shop_main' %}">Sell</a>
-                                <li class="{% if request.resolver_match.url_name == 'shop_main' %}current{% endif %}"><a href="{% url 'shop:shop_main' %}">Shop</a>
+                                <li class="{% if request.resolver_match.url_name == 'sell' %}current{% endif %}"><a href="{% url 'about_us_app:comeing_soon' %}">Sell</a>
+                                    <li class="{% if request.resolver_match.url_name == 'shop_main' %}current{% endif %}"><a href="{% url 'shop:shop_main' %}">Shop</a>
                                     <li class="{% if request.resolver_match.url_name == 'business' %}current{% endif %}"><a href="{% url 'business_app:business' %}">Business</a></li>
                                 <li class="{% if request.resolver_match.url_name == 'repair' %}current{% endif %}"><a href="{% url 'repair_app:repair' %}">Repair</a></li>
                                 </li>
@@ -63,7 +63,7 @@
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
                                 <li class="{% if request.resolver_match.url_name == 'main' %}current{% endif %}"><a href="{% url 'home:main' %}">Home</a></li>
-                                <li class="{% if request.resolver_match.url_name == 'shop_main' %}current{% endif %}"><a href="{% url 'shop:shop_main' %}">Sell</a>
+                                <li class="{% if request.resolver_match.url_name == 'sell' %}current{% endif %}"><a href="{% url 'about_us_app:comeing_soon' %}">Sell</a>
                                 <li class="{% if request.resolver_match.url_name == 'shop_main' %}current{% endif %}"><a href="{% url 'shop:shop_main' %}">Shop</a>
                                 <li class="{% if request.resolver_match.url_name == 'business' %}current{% endif %}"><a href="{% url 'business_app:business' %}">Business</a></li>
                                 <li class="{% if request.resolver_match.url_name == 'repair' %}current{% endif %}"><a href="{% url 'repair_app:repair' %}">Repair</a></li>

@@ -8,3 +8,13 @@ class ShopView(ListView):
     paginate_by = 8
     def get_queryset(self):
           return Product.objects.filter(status=True)
+
+class ProductDetailView(DetailView):
+    template_name = 'shop/product_detail.html'
+    model = Product
+    context_object_name = 'product'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products'] = Product.objects.all()[:5]
+        context['products_related'] = Product.objects.all()[:4]
+        return context

@@ -28,9 +28,9 @@
                         <div class="footer-widget recent-widget">
                             <h2>Support</h2>
                             <div class="post">
-                                <div class="text"><a href="#">blog</a></div>
-                                <div class="text"><a href="#">contact us</a></div>
-                                <div class="text"><a href="#">Online Support</a></div>
+                                <div class="text"><a href="{% url 'blog:article_list' %}">blog</a></div>
+                                <div class="text"><a href="{% url 'contactus:contactus_main' %}">contact us</a></div>
+                                <div class="text"><a href="{% url 'about_us_app:comeing_soon' %}">Online Support</a></div>
                             </div>
                         </div>
                     </div>
@@ -82,9 +82,8 @@
                         <!--Footer Nav-->
                         <nav class="footer-nav pull-right">
                             <ul class="clearfix">
-                                <li><a href="">About us</a></li>
-                                <li><a href="">Gallery</a></li>
-                                <li><a href="">Blog</a></li>
+                                <li><a href="{% url 'about_us_app:about_us' %}">About us</a></li>
+                                <li><a href="{% url 'blog:article_list' %}">Blog</a></li>
                             </ul>
                         </nav>
                         

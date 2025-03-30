@@ -1,0 +1,263 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+product_detail
+{% endblock %}
+{% block content %}
+<section class="page-title" style="background-image: url(images/background/3.jpg);">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Shop</li>
+        </ul>
+        <h1>Shop Detail</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Sidebar Page / Shop Container-->
+<div class="sidebar-page-container shop-container">
+    <div class="auto-container">
+        <div class="row clearfix">
+            
+            <!--Content Side-->
+            <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
+                <!--Shop Single-->
+                <div class="shop-single shop-page">
+
+                    <!--Product Details Section-->
+                    <section class="product-details">
+                        <!--Basic Details-->
+                        <div class="basic-details">
+                            <div class="row clearfix">
+                                <div class="image-column col-md-6 col-sm-6 col-xs-12">
+                                    <!--<figure class="image-box"><img src="images/resource/products/image-9.jpg" alt=""></figure>-->
+                                    <div class="carousel-outer wow fadeInLeft">
+                
+                                        <ul class="image-carousel">
+                                            <li><a href="{{product.main_image.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{product.main_image.url}}" alt=""></a></li>
+                                            <li><a href="{{product.image1.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{product.image1.url}}" alt=""></a></li>
+                                            <li><a href="{{product.image2.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{product.image2.url}}" alt=""></a></li>
+                                            <li><a href="{{product.image3.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{product.image3.url}}" alt=""></a></li>
+                                            <li><a href="{{product.image4.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{product.image4.url}}" alt=""></a></li>
+                                            <li><a href="{{product.image5.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{product.image5.url}}" alt=""></a></li>
+                                        </ul>
+                                        
+                                        <ul class="thumbs-carousel">
+                                            <li><img src="{{product.main_image.url}}" alt=""></li>
+                                            <li><img src="{{product.image1.url}}" alt=""></li>
+                                            <li><img src="{{product.image2.url}}" alt=""></li>
+                                            <li><img src="{{product.image3.url}}" alt=""></li>
+                                            <li><img src="{{product.image4.url}}" alt=""></li>
+                                            <li><img src="{{product.image5.url}}" alt=""></li>
+                                        </ul>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="info-column col-md-6 col-sm-6 col-xs-12">
+                                
+                                    <div class="details-header">
+                                        <h4>{{product.title}}</h4>
+                                        <div class="item-price">${{product.price}}</div>
+                                    </div>
+                                    <!--Text-->
+                                    <div class="text">
+                                        <p>{{product.little_discription|safe}}</p>
+                                    </div>
+                                    <!--Item Quantity-->
+                                    <div class="other-options clearfix">
+                                        <div class="item-quantity"><input class="quantity-spinner" type="text" value="2" name="quantity"></div>
+                                        <button type="button" class="theme-btn btn-style-one add-to-cart">Add To Cart </button>
+                                    </div>
+                                    
+                                    <!--Item Meta-->
+                                    <ul class="item-meta">
+                                        <li>Categories:  {% for x in product.categories.all %}
+                                            <a href="#">{{x.title}}</a>
+                                            {% endfor %}
+                                        </li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!--Basic Details-->
+                        
+                        <!--Product Info Tabs-->
+                        <div class="product-info-tabs">
+
+                            <!--Product Tabs-->
+                            <div class="prod-tabs" id="product-tabs">
+
+                                <!--Tab Btns-->
+                                <div class="tab-btns clearfix">
+                                    <a href="#prod-description" class="tab-btn active-btn">description</a>
+                                </div>
+
+                                <!--Tabs Container-->
+                                <div class="tabs-container">
+
+                                    <!--Tab / Active Tab-->
+                                    <div class="tab active-tab" id="prod-description">
+                                        <h3>Product Description</h3>
+                                        <div class="content">
+                                            <p>{{product.content|safe}}</p>
+                                        </div>
+                                    </div>
+                                    <!--Tab-->
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                    
+                </div>
+
+            </div>
+            <!--Content Side-->
+            
+            <!--Sidebar-->	
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <aside class="sidebar">
+                
+                    <!-- Search Form -->
+                    <div class="sidebar-widget search-box">
+                        <form method="post" action="blog.html">
+                            <div class="form-group">
+                                <input type="search" name="search-field" value="" placeholder="Search">
+                                <button type="submit"><span class="icon fa fa-search"></span></button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                    
+                    
+                    <!-- Product Category -->
+                    <div class="sidebar-widget product-category wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="sidebar-title"><h2>Product Categories</h2></div>
+                            <ul class="list">
+                                <li><a href="#">Earphones</a></li>
+                                <li><a href="#">Laptop & Notebook</a></li>
+                                <li><a href="#">Printer & Inks</a></li>
+                                <li><a href="#">Chargers</a></li>
+                                <li><a href="#">Smartphones</a></li>
+                                <li><a href="#">Computer Accessories</a></li>
+                            </ul>
+                    </div>
+                    
+                    
+                    <!-- Products Widget -->
+                    <div class="sidebar-widget products-widget wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="sidebar-title"><h2>Products</h2></div>
+                        
+                        <article class="post">
+                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-1.jpg" alt=""></a></figure>
+                            <h4><a href="blog-single.html">Samsung Galaxy s7 Edge</a></h4>
+                            <div class="price">$ 395.00</div>
+                        </article>
+                        
+                        <article class="post">
+                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-2.jpg" alt=""></a></figure>
+                            <h4><a href="blog-single.html">Beats Headphone</a></h4>   
+                            <div class="price">$ 192.00</div>                             
+                        </article>
+                        
+                        <article class="post">
+                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-3.jpg" alt=""></a></figure>
+                            <h4><a href="blog-single.html">BX 600</a></h4>
+                            <div class="price">$ 45.00</div>
+                        </article>
+                        
+                        <article class="post">
+                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-4.jpg" alt=""></a></figure>
+                            <h4><a href="blog-single.html">Epson Printer</a></h4>
+                            <div class="price">$ 115.00</div>                                
+                        </article>
+                        
+                        <article class="post">
+                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-5.jpg" alt=""></a></figure>
+                            <h4><a href="blog-single.html">Echo Headphones</a></h4>
+                            <div class="price">$ 98.00</div>
+                        </article>
+                        
+                    </div>
+                    
+                </aside>
+            </div>
+            <!--Sidebar-->  
+
+        </div>
+        
+        <div class="row clearfix">
+            <div class="product-title col-md-12">
+                <h4>Related Products</h4>
+            </div>
+            
+            <!--Shop Item-->
+            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <figure class="image-box">
+                        <a href="shop-single.html"><img src="images/resource/products/image-5.png" alt="" /></a>
+                    </figure>
+                    <!--Lower Content-->
+                    <div class="lower-content">
+                        <h3><a href="shop-single.html">XBOX 1 and PS4</a></h3>
+                        <div class="price">$125.00</div>
+                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!--Shop Item-->
+            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <figure class="image-box">
+                        <a href="shop-single.html"><img src="images/resource/products/image-6.png" alt="" /></a>
+                        <div class="product-tag">Sale</div>
+                    </figure>
+                    <!--Lower Content-->
+                    <div class="lower-content">
+                        <h3><a href="shop-single.html">APPLE MOUSE</a></h3>
+                        <div class="price">$30.00</div>
+                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!--Shop Item-->
+            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <figure class="image-box">
+                        <a href="shop-single.html"><img src="images/resource/products/image-7.png" alt="" /></a>
+                    </figure>
+                    <!--Lower Content-->
+                    <div class="lower-content">
+                        <h3><a href="shop-single.html">SENHEISER WIRED HEADSET</a></h3>
+                        <div class="price">$12.00</div>
+                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!--Shop Item-->
+            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <figure class="image-box">
+                        <a href="shop-single.html"><img src="images/resource/products/image-8.png" alt="" /></a>
+                    </figure>
+                    <!--Lower Content-->
+                    <div class="lower-content">
+                        <h3><a href="shop-single.html">HP NOTEBOOK</a></h3>
+                        <div class="price">$542.00</div>
+                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

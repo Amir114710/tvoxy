@@ -65,7 +65,7 @@ def profile_edite(request):
             form = Edite_Profile_Form(instance=user)
         return render(request , 'account/edite_profile.html' , {'form':form})
     else:
-        return redirect('home_app:home')
+        return redirect('home:main')
     
 class AddAdressView(AddressRequirdMixins , View):
     def post(self , request):

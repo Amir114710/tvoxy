@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+blog_detail
+{% endblock %}
+{% block content %}
+<section class="page-title" style="background-image: url(images/background/3.jpg);">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Blog</li>
+        </ul>
+        <h1>Blog Detail</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Sidebar Page-->
+<div class="sidebar-page-container">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--Content Side-->	
+            <div class="content-side col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                <!--Blog Section / Classic View-->
+                <section class="blog-news-section classic-view blog-detail">
+                    
+                    <!--BLog News Column-->
+                    <div class="news-block style-two">
+                        <div class="inner-box">
+                            <!--Image Box-->
+                            <div class="image-box">
+                                <img src="{{article.image.url}}" alt="" />
+                            </div>
+                            <!--Lower Content-->
+                            <div class="lower-content">
+                                <h3><a href="">{{article.title}}</a></h3>
+                                <ul class="list">
+                                    <li><span class="icon flaticon-avatar"></span> Posted by <span class="posted">{{article.author.email}}</span></li>
+                                    <li><span class="icon flaticon-business"></span> {{article.created}}</li>
+                                </ul>
+                                <div class="text">
+                                    <p>{{article.little_discription|safe}}</p>
+                                    <hr>
+                                    <p>{{article.discription|safe}}</p>
+                                </div>
+                                <!--List style One-->
+                                <ul class="list-style-one">
+                                    {% for x in article.tip.all %}
+                                    <li>{{x.tip}}</li>
+                                    {% endfor %}
+                                </ul>
+                                <!--Post Option-->
+                                <div class="post-option">
+                                <div class="clearfix">
+                                    <ul class="pull-left tags"><li>tags: </li> {% for x in article.tag.all %}<li><a href="#">{{x.title}}</a></li>{% endfor %} <li></li>
+                                </div>
+                            </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </section>
+            </div>
+            <!--Content Side-->
+            
+            <!--Sidebar-->	
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <aside class="sidebar">                    
+                    <!-- Sidebar Category -->
+                    <div class="sidebar-widget sidebar-category wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="sidebar-title"><h2>Categories</h2></div>
+                        
+                        <ul class="list">
+                            {% for x in article.category.all %}
+                            <li><a href="#">{{x.title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    
+                    <!-- Popular Posts -->
+                    <div class="sidebar-widget popular-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="sidebar-title"><h2>Recent Posts</h2></div>
+                        <!--Post-->
+                        {% for x in articles %}
+                        <article class="post">
+                            <figure class="post-thumb"><a href="{% url 'blog:article_detail' x.slug %}"><img src="{{x.image.url}}" alt=""></a></figure>
+                            <h4><a href="{% url 'blog:article_detail' x.slug %}">{{x.title}}</a></h4>
+                            <div class="post-info">{{x.created}}</div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Popular Tags -->
+                    <div class="sidebar-widget popular-tags">
+                        <div class="sidebar-title"><h2>tags</h2></div>
+                        {% for x in article.tag.all %}
+                        <a href="#">{{x.title}}</a>
+                        {% endfor %}
+                    </div>
+                </aside>
+            </div>
+            <!--Sidebar-->  
+        </div>
+    </div>
+</div>
+{% endblock %}

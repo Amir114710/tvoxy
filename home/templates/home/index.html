@@ -273,83 +273,17 @@ Home
         <div class="testimonial-carousel">
             <div class="two-item-carousel">
             
+                {% for x in contactus %}
                 <!--Testimonial Block-->
                 <div class="testimonial-block-one">
                     <div class="inner-box">
                         <!--Image Box-->
-                        <figure class="image-box">
-                            <img src="{% static "images/resource/testimonial-1.jpg" %}" alt="" />
-                        </figure>
-                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
+                        <div class="text">{{x.message}}</div>
                         <!--Designation-->
-                        <div class="designation">@ Lita, <span>employed by Company Name</span></div>
+                        <div class="designation">@ {{x.name}},</div>
                     </div>
                 </div>
-                
-                <!--Testimonial Block-->
-                <div class="testimonial-block-one">
-                    <div class="inner-box">
-                        <!--Image Box-->
-                        <figure class="image-box">
-                            <img src="x{% static "images/resource/testimonial-1.jpg" %}" alt="" />
-                        </figure>
-                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
-                        <!--Designation-->
-                        <div class="designation">@ Stephen George, <span>employed by Company Name</span></div>
-                    </div>
-                </div>
-                
-                <!--Testimonial Block-->
-                <div class="testimonial-block-one">
-                    <div class="inner-box">
-                        <!--Image Box-->
-                        <figure class="image-box">
-                            <img src="{% static "images/resource/testimonial-1.jpg" %}" alt="" />
-                        </figure>
-                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
-                        <!--Designation-->
-                        <div class="designation">@ Lita, <span>employed by Company Name</span></div>
-                    </div>
-                </div>
-                
-                <!--Testimonial Block-->
-                <div class="testimonial-block-one">
-                    <div class="inner-box">
-                        <!--Image Box-->
-                        <figure class="image-box">
-                            <img src="{% static "images/resource/testimonial-2.jpg" %}" alt="" />
-                        </figure>
-                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
-                        <!--Designation-->
-                        <div class="designation">@ Stephen George, <span>employed by Company Name</span></div>
-                    </div>
-                </div>
-                
-                <!--Testimonial Block-->
-                <div class="testimonial-block-one">
-                    <div class="inner-box">
-                        <!--Image Box-->
-                        <figure class="image-box">
-                            <img src="{% static "images/resource/testimonial-1.jpg" %}" alt="" />
-                        </figure>
-                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
-                        <!--Designation-->
-                        <div class="designation">@ Lita, <span>employed by Company Name</span></div>
-                    </div>
-                </div>
-                
-                <!--Testimonial Block-->
-                <div class="testimonial-block-one">
-                    <div class="inner-box">
-                        <!--Image Box-->
-                        <figure class="image-box">
-                            <img src="{% static "images/resource/testimonial-2.jpg" %}" alt="" />
-                        </figure>
-                        <div class="text">Hope ultimate truth insofar god salvation god. The Truth revaluation insofar suicide inexpedient gains ultimate. Joy faith convictions victorious passion ocean.</div>
-                        <!--Designation-->
-                        <div class="designation">@ Stephen George, <span>employed by Company Name</span></div>
-                    </div>
-                </div>
+                {% endfor %}
                 
             </div>
         </div>
@@ -361,67 +295,32 @@ Home
     <div class="auto-container">
         <div class="row clearfix">
             <!--News Block-->
+                            <!--Section Title One-->
+            <div class="sec-title-two">
+                <h2>OUR BLOG</h2>
+                <div class="text">Gains hope spirit justice chaos society madness suicide god. Virtues will ultimate<br>abstract sexuality mountains marvelous virtues.</div>
+                <a href="{% url 'blog:article_list' %}" class="theme-btn btn-style-two">GO TO OUR BLOG</a>
+            </div>  
+            {% for x in articles %}
             <div class="news-block left-blog col-md-6 col-sm-12 col-xs-12">
-                <!--Section Title One-->
-                <div class="sec-title-two">
-                    <h2>OUR BLOG</h2>
-                    <div class="text">Gains hope spirit justice chaos society madness suicide god. Virtues will ultimate<br>abstract sexuality mountains marvelous virtues.</div>
-                    <a href="#" class="theme-btn btn-style-two">GO TO OUR BLOG</a>
-                </div>
-                
                 <!--Inner Box-->
                 <div class="inner-box">
                     <div class="image-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <a href="blog-single.html"><img src="{% static "images/resource/news-1.jpg" %}" alt="" /></a>
+                        <a href="{% url 'blog:article_detail' x.slug %}"><img src="{{x.image.url}}" alt="" /></a>
                     </div>
                     <!--Lower Content-->
                     <div class="lower-content">
-                        <h3><a href="blog-single.html">Unlocking Pin Protected Devices</a></h3>
+                        <h3><a href="{% url 'blog:article_detail' x.slug %}">{{x.title}}</a></h3>
                         <ul class="list">
-                            <li><span class="icon flaticon-avatar"></span> Posted by <span class="posted">Stephen</span></li>
-                            <li><span class="icon flaticon-business"></span> 27 August 2016</li>
+                            <li><span class="icon flaticon-avatar"></span> Posted by <span class="posted">{{x.author.email}}</span></li>
+                            <li><span class="icon flaticon-business"></span> {{x.created}}</li>
                         </ul>
-                        <div class="text">Free fearful disgust hatred fearful decieve. Strong chaos eternal-return abstract of virtues hope philosophy marvelous selfish faith. Disgust good abstract war passion mountains sea derive morality play oneself holiest inexpedient.</div>
-                        <a class="read-more" href="blog-single.html">Read More</a>
+                        <div class="text">{{x.little_discription|safe}}</div>
+                        <a class="read-more" href="{% url 'blog:article_detail' x.slug %}">Read More</a>
                     </div>
                 </div>
             </div>
-            
-            <!--News Block-->
-            <div class="news-block right-blog col-md-6 col-sm-12 col-xs-12">
-                <!--Inner Box-->
-                <div class="inner-box">
-                    <div class="image-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <a href="blog-single.html"><img src="{% static "images/resource/news-2.jpg" %}" alt="" /></a>
-                    </div>
-                    <!--Lower Content-->
-                    <div class="lower-content">
-                        <h3><a href="blog-single.html">Complete Disassembly & Installation Guides</a></h3>
-                        <ul class="list">
-                            <li><span class="icon flaticon-avatar"></span> Posted by <span class="posted">Andriana</span></li>
-                            <li><span class="icon flaticon-business"></span> 25 August 2016</li>
-                        </ul>
-                        <div class="text">Free fearful disgust hatred fearful decieve. Strong chaos eternal-return abstract of virtues hope philosophy marvelous selfish faith. Disgust good abstract war passion mountains sea derive morality play oneself holiest inexpedient.</div>
-                        <a class="read-more" href="blog-single.html">Read More</a>
-                    </div>
-                </div>
-                
-                <!-- Subscribe -->
-                <div class="subscribe wow zoomInStable" data-wow-delay="0ms" data-wow-duration="1500ms" style="background-image:url({% static "images/resource/subcribe.jpg" %});">
-                    <h3>SUBSCRIBE TO OUR NEWS</h3>
-                    <form method="post" action="index.html">
-                        <div class="row clearfix">
-                            <div class="form-group col-md-9 col-sm-9 col-xs-12">
-                                <input type="email" name="email" value="" placeholder="Enter your email" required>
-                            </div>
-                            <div class="form-group col-md-3 col-sm-3 col-xs-12">
-                                <button type="submit" class="theme-btn btn-style-one">SUBSCRIBE</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                
-            </div>
+            {% endfor %}
             
         </div>
     </div>
