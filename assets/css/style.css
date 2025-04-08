@@ -6125,6 +6125,12 @@ ul,li{
 		margin-top: 0em;
 	}
   }
+  .coming-soon {
+	text-align: center;
+	font-size: 2em;
+	color: #333;
+	position: relative;
+}
 .explosion {
 	position: absolute;
 	top: -50px;

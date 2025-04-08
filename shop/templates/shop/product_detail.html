@@ -68,14 +68,45 @@ product_detail
                                     </div>
                                     <!--Item Quantity-->
                                     <div class="other-options clearfix">
-                                        <div class="item-quantity"><input class="quantity-spinner" type="text" value="2" name="quantity"></div>
-                                        <button type="button" class="theme-btn btn-style-one add-to-cart">Add To Cart </button>
+                                        <form method="post" action="">
+                                            {% csrf_token %}
+                                            <input type="number" id="inputQuantitySelector" class="form-control" aria-live="polite" data-bs-step="counter" name="quantity" title="quantity" value="0" min="0" max="10" step="1" data-bs-round="0" aria-label="Quantity selector">
+                                            <br>
+                                            <div class="form-group country col-md-12 col-sm-12 col-xs-12">
+                                                <div class="field-label">Color <sup>*</sup> </div>
+                                                <select class="form-control" name="country">
+                                                    {% for x in product.color.all %}
+                                                    <option>{{x.title}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <br>
+                                            <div class="form-group country col-md-12 col-sm-12 col-xs-12">
+                                                <div class="field-label">Storage <sup>*</sup> </div>
+                                                <select class="form-control" name="country">
+                                                    {% for x in product.storage.all %}
+                                                    <option>{{x.title}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <br>
+                                            <div class="form-group country col-md-12 col-sm-12 col-xs-12">
+                                                <div class="field-label">Region <sup>*</sup> </div>
+                                                <select class="form-control" name="country">
+                                                    {% for x in product.region.all %}
+                                                    <option>{{x.title}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <br>
+                                            <button type="submit" class="theme-btn btn-style-one add-to-cart">Add To Cart </button>
+                                        </form>
                                     </div>
                                     
                                     <!--Item Meta-->
                                     <ul class="item-meta">
                                         <li>Categories:  {% for x in product.categories.all %}
-                                            <a href="#">{{x.title}}</a>
+                                            <a href="{% url 'shop:category-product' x.pk %}">{{x.title}}</a>
                                             {% endfor %}
                                         </li>
                                     </ul>
@@ -121,29 +152,13 @@ product_detail
             <!--Sidebar-->	
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <aside class="sidebar">
-                
-                    <!-- Search Form -->
-                    <div class="sidebar-widget search-box">
-                        <form method="post" action="blog.html">
-                            <div class="form-group">
-                                <input type="search" name="search-field" value="" placeholder="Search">
-                                <button type="submit"><span class="icon fa fa-search"></span></button>
-                            </div>
-                        </form>
-                        
-                    </div>
-                    
-                    
                     <!-- Product Category -->
                     <div class="sidebar-widget product-category wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <div class="sidebar-title"><h2>Product Categories</h2></div>
                             <ul class="list">
-                                <li><a href="#">Earphones</a></li>
-                                <li><a href="#">Laptop & Notebook</a></li>
-                                <li><a href="#">Printer & Inks</a></li>
-                                <li><a href="#">Chargers</a></li>
-                                <li><a href="#">Smartphones</a></li>
-                                <li><a href="#">Computer Accessories</a></li>
+                                {% for cate in categories %}
+                                <li><a href="{% url 'shop:category-product' cate.pk %}">{{cate.title}}</a></li>
+                                {% endfor %}
                             </ul>
                     </div>
                     
@@ -152,35 +167,14 @@ product_detail
                     <div class="sidebar-widget products-widget wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <div class="sidebar-title"><h2>Products</h2></div>
                         
+                        {% for x in products %}
                         <article class="post">
-                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-1.jpg" alt=""></a></figure>
-                            <h4><a href="blog-single.html">Samsung Galaxy s7 Edge</a></h4>
-                            <div class="price">$ 395.00</div>
+                            <figure class="post-thumb"><a href="{% url 'shop:product_detail' x.slug %}"><img src="{{x.main_image.url}}" alt="" width="50em" height="50em"></a></figure>
+                            <h4><a href="{% url 'shop:product_detail' x.slug %}">{{x.title}}</a></h4>
+                            <div class="price">$ {{x.price}}</div>
                         </article>
+                        {% endfor %}
                         
-                        <article class="post">
-                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-2.jpg" alt=""></a></figure>
-                            <h4><a href="blog-single.html">Beats Headphone</a></h4>   
-                            <div class="price">$ 192.00</div>                             
-                        </article>
-                        
-                        <article class="post">
-                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-3.jpg" alt=""></a></figure>
-                            <h4><a href="blog-single.html">BX 600</a></h4>
-                            <div class="price">$ 45.00</div>
-                        </article>
-                        
-                        <article class="post">
-                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-4.jpg" alt=""></a></figure>
-                            <h4><a href="blog-single.html">Epson Printer</a></h4>
-                            <div class="price">$ 115.00</div>                                
-                        </article>
-                        
-                        <article class="post">
-                            <figure class="post-thumb"><a href="blog-single.html"><img src="images/resource/products/product-5.jpg" alt=""></a></figure>
-                            <h4><a href="blog-single.html">Echo Headphones</a></h4>
-                            <div class="price">$ 98.00</div>
-                        </article>
                         
                     </div>
                     
@@ -195,66 +189,26 @@ product_detail
                 <h4>Related Products</h4>
             </div>
             
-            <!--Shop Item-->
-            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <a href="shop-single.html"><img src="images/resource/products/image-5.png" alt="" /></a>
-                    </figure>
-                    <!--Lower Content-->
-                    <div class="lower-content">
-                        <h3><a href="shop-single.html">XBOX 1 and PS4</a></h3>
-                        <div class="price">$125.00</div>
-                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
+            {% for x in products %}
+                {% if x.categories.first == product.categories.first %}
+                    {% if x.id != product.id %}
+                    <!--Shop Item-->
+                    <div class="shop-item col-md-3 col-sm-6 col-xs-12">
+                        <div class="inner-box">
+                            <figure class="image-box">
+                                <a href="{% url 'shop:product_detail' x.slug %}"><img src="{{x.main_image.url}}" width="100em" height="200em" alt="" /></a>
+                            </figure>
+                            <!--Lower Content-->
+                            <div class="lower-content">
+                                <h3><a href="{% url 'shop:product_detail' x.slug %}">{{x.title}}</a></h3>
+                                <div class="price">${{x.price}}</div>
+                                <a href="{% url 'shop:product_detail' x.slug %}" class="cart-btn theme-btn btn-style-two">Add to cart</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            
-            <!--Shop Item-->
-            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <a href="shop-single.html"><img src="images/resource/products/image-6.png" alt="" /></a>
-                        <div class="product-tag">Sale</div>
-                    </figure>
-                    <!--Lower Content-->
-                    <div class="lower-content">
-                        <h3><a href="shop-single.html">APPLE MOUSE</a></h3>
-                        <div class="price">$30.00</div>
-                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!--Shop Item-->
-            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <a href="shop-single.html"><img src="images/resource/products/image-7.png" alt="" /></a>
-                    </figure>
-                    <!--Lower Content-->
-                    <div class="lower-content">
-                        <h3><a href="shop-single.html">SENHEISER WIRED HEADSET</a></h3>
-                        <div class="price">$12.00</div>
-                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!--Shop Item-->
-            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
-                <div class="inner-box">
-                    <figure class="image-box">
-                        <a href="shop-single.html"><img src="images/resource/products/image-8.png" alt="" /></a>
-                    </figure>
-                    <!--Lower Content-->
-                    <div class="lower-content">
-                        <h3><a href="shop-single.html">HP NOTEBOOK</a></h3>
-                        <div class="price">$542.00</div>
-                        <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
-                    </div>
-                </div>
-            </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
             
         </div>
         

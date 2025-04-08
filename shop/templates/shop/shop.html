@@ -28,9 +28,9 @@ shop
                     <div class="select-column pull-right col-md-3 col-sm-4 col-xs-12">
                         <div class="form-group">
                             <select name="sort-by">
-                                <option>Default Sorting</option>
-                                <option>By Order</option>
-                                <option>By Price</option>
+                                {% for x in categories %}
+                                <option>{{x.title}}</option>
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
@@ -43,16 +43,16 @@ shop
                 <div class="shop-item col-md-3 col-sm-6 col-xs-12">
                 	<div class="inner-box">
                     	<figure class="image-box">
-                        	<a href=""><img src="{{x.main_image.url}}" alt="" /></a>
+                        	<a href="{% url 'shop:product_detail' x.slug %}"><img src="{{x.main_image.url}}" width="100em" height="200em" alt="" /></a>
                             {% if x.on_sale == True %}
                             <div class="product-tag">Sale</div>
                             {% endif %}
                         </figure>
                         <!--Lower Content-->
                         <div class="lower-content">
-                        	<h3><a href="shop-single.html">{{x.title}}</a></h3>
+                        	<h3><a href="{% url 'shop:product_detail' x.slug %}">{{x.title}}</a></h3>
                             <div class="price">${{x.price}}</div>
-                            <a href="shop-single.html" class="cart-btn theme-btn btn-style-two">Add to cart</a>
+                            <a href="{% url 'shop:product_detail' x.slug %}" class="cart-btn theme-btn btn-style-two">Add to cart</a>
                         </div>
                     </div>
                 </div>

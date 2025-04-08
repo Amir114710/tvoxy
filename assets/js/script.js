@@ -342,7 +342,7 @@
 	//Two Column Testimonial Carousel
 	if ($('.two-item-carousel').length) {
 		$('.two-item-carousel').owlCarousel({
-			loop:true,
+			loop:false,
 			margin:30,
 			nav:true,
 			smartSpeed: 1000,
