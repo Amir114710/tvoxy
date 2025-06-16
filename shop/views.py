@@ -8,11 +8,12 @@ class ShopView(ListView):
     template_name = 'shop/shop.html'
     context_object_name = 'products'
     paginate_by = 8
+    model = Product
     def get_queryset(self):
           return Product.objects.filter(status=True)
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
+        context['category'] = Category.objects.all()
         return context
 
 class ProductDetailView(DetailView):
@@ -30,5 +31,14 @@ class CategoryProductView(View):
     template_name = 'shop/shop.html'
     def get(self , request , pk):
         category = get_object_or_404(Category , id=pk)
+        categories = Category.objects.all()
         products = category.products.all()
-        return render(request , self.template_name , {'products':products})
+        return render(request , self.template_name , {'products':products , 'category':categories})
+    
+class SearchBox(TemplateView):
+    queryset = None
+    template_name = "shop/shop.html"
+    def get(self, request, *args, **kwargs):
+        q = request.GET.get('q')
+        queryset =  Product.objects.filter(title__icontains = q)
+        return render(request, self.template_name, {'products': queryset})

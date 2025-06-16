@@ -17,23 +17,37 @@
                             </button>
                         </div>
                         
-                        <div class="navbar-collapse collapse clearfix">
+                        <div class="navbar-collapse collapse clearfix" style="display: block!important;">
                             <ul class="navigation clearfix">
                                 <li class="{% if request.resolver_match.url_name == 'main' %}current{% endif %}"><a href="{% url 'home:main' %}">Home</a></li>
-                                <li class="{% if request.resolver_match.url_name == 'sell' %}current{% endif %}"><a href="{% url 'about_us_app:comeing_soon' %}">Sell</a>
+                                <li class="{% if request.resolver_match.url_name == 'sell' %}current{% endif %}"><a href="{% url 'sell:main_sell' %}">Sell</a>
                                     <li class="{% if request.resolver_match.url_name == 'shop_main' %}current{% endif %}"><a href="{% url 'shop:shop_main' %}">Shop</a>
                                     <li class="{% if request.resolver_match.url_name == 'business' %}current{% endif %}"><a href="{% url 'business_app:business' %}">Business</a></li>
                                 <li class="{% if request.resolver_match.url_name == 'repair' %}current{% endif %}"><a href="{% url 'repair_app:repair' %}">Repair</a></li>
                                 </li>
                                 <li class="{% if request.resolver_match.url_name == 'charity_main' %}current{% endif %}"><a href="{% url 'charity:charity_main' %}">Charity</a></li>
+                                <li id="responsive-2button" class="dropdown"><a href="#">cart</a>
+                                    <ul>
+                                    	<li><a href="{% url 'repair_cart_app:cart_main' %}">repair cart</a></li>
+                                        <li><a href="{% url 'cart:cart_main' %}">shop cart</a></li>
+                                    </ul>
+                                </li>
+                                <li id="responsive-2button"><a href="{% if request.user.is_authenticated %}{% url 'account:profile' %}{% else %}{% url 'account:otp' %}{% endif %}" class="search-btn"><span class="icon fa fa-user"></span></a></li>
                             </ul>
                         </div>
                     </nav>
                     <!-- Main Menu End-->
                 
                 	<div class="btn-outer"><a href="#" class="search-btn search-box-btn"><span class="icon fa fa-search"></span></a></div>
-                	<div class="btn-outer" style="position: absolute;left: 71em;"><a href="{% if request.user.is_authenticated %}{% url 'account:profile' %}{% else %}{% url 'account:otp' %}{% endif %}" class="search-btn"><span class="icon fa fa-user"></span></a></div>
-                	<div class="btn-outer" style="position: absolute;left: 68em;"><a href="{% url 'about_us_app:comeing_soon' %}" class="search-btn"><img src="{% static "images/shopping-cart-svg-png-icon-download-28.png" %}" width="18em" height="13em" alt=""></a></div>                 
+                	<div class="btn-outer" style="position: absolute;left:115em;"><a href="{% if request.user.is_authenticated %}{% url 'account:profile' %}{% else %}{% url 'account:otp' %}{% endif %}" class="search-btn"><span class="icon fa fa-user"></span></a></div>
+                    <div class="dropdown" style="position: absolute;left: 115em;top:2.2em;">
+                        <div class="btn-outer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{% static "images/shopping-cart-svg-png-icon-download-28.png" %}" width="18em" height="13em" alt=""></div>                 
+                        <div style="margin-top: 2em;margin-left: -9em; background-color: #2E4C66;color: white!important;text-align: center; " class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="{% url 'cart:cart_main' %}"><h5 style="color: white;margin-top: 1em;">Shop Cart</h5></a>
+                          <hr>
+                          <a class="dropdown-item" href="{% url 'repair_cart_app:cart_main' %}"><h5 style="color: white;margin-top: 0em;">Repair Cart</h5></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,10 +74,10 @@
                             </button>
                         </div>
                         
-                        <div class="navbar-collapse collapse clearfix">
+                        <div class="navbar-collapse collapse clearfix" style="display: block!important;">
                             <ul class="navigation clearfix">
                                 <li class="{% if request.resolver_match.url_name == 'main' %}current{% endif %}"><a href="{% url 'home:main' %}">Home</a></li>
-                                <li class="{% if request.resolver_match.url_name == 'sell' %}current{% endif %}"><a href="{% url 'about_us_app:comeing_soon' %}">Sell</a>
+                                <li class="{% if request.resolver_match.url_name == 'sell' %}current{% endif %}"><a href="{% url 'sell:main_sell' %}">Sell</a>
                                     <li class="{% if request.resolver_match.url_name == 'shop_main' %}current{% endif %}"><a href="{% url 'shop:shop_main' %}">Shop</a>
                                     <li class="{% if request.resolver_match.url_name == 'business' %}current{% endif %}"><a href="{% url 'business_app:business' %}">Business</a></li>
                                 <li class="{% if request.resolver_match.url_name == 'repair' %}current{% endif %}"><a href="{% url 'repair_app:repair' %}">Repair</a></li>

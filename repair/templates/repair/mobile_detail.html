@@ -11,7 +11,7 @@ service_detail
                 <li><a href="{% url 'home:main' %}">Home</a></li>
                 <li class="active">Repair Detail</li>
             </ul>
-        	<h1>Repair Detail</h1>
+        	<h1>Repair Mobile Detail</h1>
         </div>
     </section>
     <!--End Page Title-->
@@ -47,7 +47,7 @@ service_detail
                                     
                                         <div class="details-header">
                                             <h4>{{mobile_repair.title}}</h4>
-                                            <div class="item-price">{{mobile_repair.price}}</div>
+                                            <div class="item-price">${{mobile_repair.price}}</div>
                                         </div>
 										<!--Text-->
                                         <div class="text">
@@ -68,7 +68,7 @@ service_detail
                                         <ul class="item-meta">
                                             <li>
                                                 Categories: {% for x in mobile_repair.categories.all %}
-                                                <a href="#">{{x.title}}</a>
+                                                <a href="{% url 'repair_app:category_detail' x.pk %}">{{x.title}}</a>
                                                 {% endfor %}
                                             </li>
                                         </ul>
@@ -161,7 +161,7 @@ service_detail
                             <div class="sidebar-title"><h2>Repair Categories</h2></div>
                             	<ul class="list">
                                     {% for x in categories %}
-                                        <li><a href="#">{{x.title}}</a></li>
+                                        <li><a href="{% url 'repair_app:category_detail' x.pk %}">{{x.title}}</a></li>
                                     {% endfor %}
                                 </ul>
                         </div>

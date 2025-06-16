@@ -479,3 +479,24 @@
 	
 
 })(window.jQuery);
+function JSalert(){
+	Swal.fire({
+		title: "Are you sure?",
+		text: "You won't be able to revert this!good",
+		icon: "warning",
+	});
+}
+function JSalert1(){
+	Swal.fire({
+		title: "Are you sure?",
+		text: "You won't be able to revert this!fair",
+		icon: "warning",
+	});
+}
+function JSalert2(){
+	Swal.fire({
+		title: "Are you sure?",
+		text: "You won't be able to revert this!semi",
+		icon: "warning",
+	});
+}

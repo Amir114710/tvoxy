@@ -10,31 +10,10 @@ class Category(models.Model):
     def __str__(self) -> str:
         return self.title
 
-class Color(models.Model):
-    title = models.CharField(max_length=250)
-
-    def __str__(self):
-        return self.title
-    
-class Storage(models.Model):
-    title = models.CharField(max_length=250)
-
-    def __str__(self):
-        return self.title
-    
-class Region(models.Model):
-    title = models.CharField(max_length=250)
-
-    def __str__(self):
-        return self.title
-
 class Product(models.Model):
     title = models.CharField(max_length=350)
     slug = models.SlugField(blank=True)
     categories = models.ManyToManyField(Category , related_name='products' , null=True , blank=True)
-    color = models.ForeignKey(Color , on_delete=models.CASCADE , related_name='products_color' , null=True , blank=True)
-    storage = models.ForeignKey(Storage , on_delete=models.CASCADE , related_name='products_storage' , null=True , blank=True)
-    region = models.ForeignKey(Region , on_delete=models.CASCADE , related_name='products_region' , null=True , blank=True)
     price = models.BigIntegerField(default=1)
     little_discription = RichTextUploadingField(null=True , blank=True)
     main_image = models.ImageField(upload_to = 'product/image' , null=True , blank=True)
@@ -64,21 +43,18 @@ class Product(models.Model):
         ordering = ('-created',)
         get_latest_by = 'created'
 
-class Comments(models.Model):
-    user = models.ForeignKey(User , related_name="comment_user" , on_delete=models.CASCADE)
-    products = models.ForeignKey(Product , related_name="comment_mobile" , on_delete=models.CASCADE)
-
-    parent = models.ForeignKey('self' , on_delete=models.CASCADE , related_name = 'replies' , null=True , blank=True)
-
-    message = RichTextUploadingField(null=True, blank=True)
-    created = models.DateTimeField(auto_now_add=True)
+class Storage(models.Model):
+    product = models.ForeignKey(Product , on_delete=models.CASCADE , related_name='product_storage' , null=True)
+    storage = models.CharField(max_length=2500 , null=True , blank=True)
+    price = models.BigIntegerField(default=0)
 
     def __str__(self):
-        return f'{self.user.username}-{self.products.title}'
+        return self.storage
 
-    class Meta:
-        ordering = ('-created',)
+class Color(models.Model):
+    product = models.ForeignKey(Product , on_delete=models.CASCADE , related_name='product_color' , null=True)
+    color = models.CharField(max_length=2500 , null=True)
+    price = models.BigIntegerField(default=0)
 
-    def get_created(self):
-        created = (now().date - self.created).days
-        return created
+    def __str__(self):
+        return self.color

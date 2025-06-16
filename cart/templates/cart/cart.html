@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+cart
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">View Cart</li>
+        </ul>
+        <h1>View Cart</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Cart Section-->
+<section class="cart-section">
+    <div class="auto-container">
+        
+        <!--Cart Outer-->
+        <div class="cart-outer">
+            <div class="table-outer">
+                <table class="cart-table">
+                    <thead class="cart-header">
+                        <tr>
+                            <th><!--<span class="fa fa-trash-o"></span>--></th>
+                            <th class="prod-column">PRODUCT IMAGE</th>
+                            <th>PRODUCT TITLE</th>
+                            <th class="price">Price</th>
+                            <th>QUANTITY</th>
+                            <th>Color</th>
+                            <th>Storage</th>
+                            <th>Total</th>
+                            
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% for item in cart %}
+                        <tr>
+                            <td class="remove"><a href="{% url 'cart:cart_delete' item.unique_id %}" class="remove-btn"><span class="fa fa-remove"></span></a></td>
+                            <td class="prod-column">
+                                <div class="column-box">
+                                    <figure class="prod-thumb"><a href="#"><img src="{{item.product.main_image.url}}" alt=""></a></figure>
+                                </div>
+                            </td>
+                            <td class="product-name">{{item.product.title}}</td>
+                            <td class="price">${{item.product.price}}</td>
+                            <td class="qty">{{item.quantity}}</td>
+                            <td class="qty">{{item.color}}</td>
+                            <td class="qty">{{item.storage}}</td>
+                            <td class="sub-total">${{item.total}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="cart-options clearfix">
+                <div class="pull-left">
+                    <div class="apply-coupon clearfix">
+                    </div>
+                </div>
+                
+                <div class="pull-right">
+                    <a href="{% url 'shop:shop_main' %}"><button type="button" class="theme-btn btn-style-three">Update Cart</button></a>
+                </div>
+                
+            </div>
+            
+            <div class="row clearfix">
+                
+                <div class="column pull-right col-md-5 col-sm-8 col-xs-12">
+                    <h3>Cart Totals</h3>
+                    <!--Totals Table-->
+                    <ul class="totals-table">
+                        <li class="clearfix"><span class="col">Sub Total</span><span class="col">${{cart.total}}</span></li>
+                    </ul>
+                    
+                    <div class="text-right"><a href="{% url 'cart:order_add' %}"><button type="submit" class="theme-btn btn-style-one proceed-btn">Proceed to Checkout</button></a></div>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+        
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{sell.title}}
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Sell</li>
+        </ul>
+        <h1>Sell Detail</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Sidebar Page / Shop Container-->
+<div class="sidebar-page-container shop-container">
+    <div class="auto-container">
+        <div class="row clearfix">
+            
+            <!--Content Side-->
+            <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
+                <!--Shop Single-->
+                <div class="shop-single shop-page">
+
+                    <!--Product Details Section-->
+                    <section class="product-details">
+                        <!--Basic Details-->
+                        <div class="basic-details">
+                            <div class="row clearfix">
+                                <div class="image-column col-md-6 col-sm-6 col-xs-12">
+                                    <!--<figure class="image-box"><img src="images/resource/products/image-9.jpg" alt=""></figure>-->
+                                    <div class="carousel-outer wow fadeInLeft">
+                
+                                        <ul class="image-carousel">
+                                            <li><a href="{{sell.main_image.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{sell.main_image.url}}" alt=""></a></li>
+                                            <li><a href="{{sell.image1.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{sell.image1.url}}" alt=""></a></li>
+                                            <li><a href="{{sell.image2.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{sell.image2.url}}" alt=""></a></li>
+                                            <li><a href="{{sell.image3.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{sell.image3.url}}" alt=""></a></li>
+                                            <li><a href="{{sell.image4.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{sell.image4.url}}" alt=""></a></li>
+                                            <li><a href="{{sell.image5.url}}" class="lightbox-image" title="Image Caption Here"><img src="{{sell.image5.url}}" alt=""></a></li>
+                                        </ul>
+                                        
+                                        <ul class="thumbs-carousel">
+                                            <li><img src="{{sell.main_image.url}}" alt=""></li>
+                                            <li><img src="{{sell.image1.url}}" alt=""></li>
+                                            <li><img src="{{sell.image2.url}}" alt=""></li>
+                                            <li><img src="{{sell.image3.url}}" alt=""></li>
+                                            <li><img src="{{sell.image4.url}}" alt=""></li>
+                                            <li><img src="{{sell.image5.url}}" alt=""></li>
+                                        </ul>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="info-column col-md-6 col-sm-6 col-xs-12">
+                                
+                                    <div class="details-header">
+                                        <h4>{{sell.title}}</h4>
+                                    </div>
+                                    <!--Text-->
+                                    <div class="text">
+                                        <p>{{sell.little_discription|safe}}</p>
+                                        <div class="stock">In Stock</div>
+                                    </div>
+                                    <!--Item Quantity-->
+                                    <div class="other-options clearfix">
+                                        <form method="post" action="{% url 'sell_cart:cart_add' sell.slug %}">
+                                            {% csrf_token %}
+                                            <input type="number" id="inputQuantitySelector" class="form-control" aria-live="polite" data-bs-step="counter" name="quantity" title="quantity" value="0" min="0" max="10" step="1" data-bs-round="0" aria-label="Quantity selector">
+                                            <br>
+                                            <div class="form-group country col-md-12 col-sm-12 col-xs-12">
+                                                <div class="field-label">Storage <sup>*</sup> </div>
+                                                <select class="form-control" name="storage">
+                                                    {% for x in sell.sell_storage.all %}
+                                                    <option>{{x.storage}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <br>
+                                            <div class="form-group country col-md-12 col-sm-12 col-xs-12">
+                                                <div class="field-label">Condition <sup>*</sup> </div>
+                                                <select class="form-control" name="condition">
+                                                    {% for x in sell.sell_condition.all %}
+                                                    <option>{{x.condition}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <div class="dropdown" id="dropdown-button-style">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#2E4C66 ;">
+                                                    Discription
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-top: -2em;">
+                                                    <a onclick="JSalert()" class="dropdown-item">good</a>
+                                                    <a onclick="JSalert1()" class="dropdown-item">fair</a>
+                                                    <a onclick="JSalert2()" class="dropdown-item">semi</a>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="form-group country col-md-12 col-sm-12 col-xs-12">
+                                                <button type="submit" class="theme-btn btn-style-one add-to-cart" style="margin-top: -5em;">Sell </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    
+                                    <!--Item Meta-->
+                                    <ul class="item-meta">
+                                        <li>Categories: {% for cate in sell.categories.all %}
+                                            <a href="{% url 'sell:category_detail' cate.pk %}">{{cate.title}}</a> ,
+                                            {% endfor %}
+                                        </li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!--Basic Details-->
+                        
+                        <!--Product Info Tabs-->
+                        <div class="product-info-tabs">
+
+                            <!--Product Tabs-->
+                            <div class="prod-tabs" id="product-tabs">
+
+                                <!--Tab Btns-->
+                                <div class="tab-btns clearfix">
+                                    <a href="#prod-description" class="tab-btn active-btn">description</a>
+                                </div>
+
+                                <!--Tabs Container-->
+                                <div class="tabs-container">
+
+                                    <!--Tab / Active Tab-->
+                                    <div class="tab active-tab" id="prod-description">
+                                        <h3>Sell Description</h3>
+                                        <div class="content">
+                                            <p>{{sell.content|safe}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                    
+                </div>
+
+            </div>
+            <!--Content Side-->
+            
+            <!--Sidebar-->	
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <aside class="sidebar">                    
+                    <!-- Product Category -->
+                    <div class="sidebar-widget product-category wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="sidebar-title"><h2>Sell Categories</h2></div>
+                            <ul class="list">
+                                {% for cate in categories.all %}
+                                <li><a href="{% url 'sell:category_detail' cate.pk %}">{{cate.title}}</a></li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                    
+                    
+                    <!-- Products Widget -->
+                    <div class="sidebar-widget products-widget wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="sidebar-title"><h2>Sell Product</h2></div>
+                        
+                        {% for item in sell_product %}
+                        <article class="post">
+                            <figure class="post-thumb"><a href="{% url 'sell:sell_product_detail' item.slug %}"><img src="{{ item.main_image.url }}" width="50em" height="50em" alt=""></a></figure>
+                            <h4><a href="{% url 'sell:sell_product_detail' item.slug %}">{{item.title}}</a></h4>
+                            <div class="price"><a href="{% url 'repair_app:repair_detail' item.pk %}">Read More</a></div>                                                        </article>
+                        {% endfor %}
+                        
+                    </div>
+                    
+                </aside>
+            </div>
+            <!--Sidebar-->  
+
+        </div>
+        
+        <div class="row clearfix">
+            <div class="product-title col-md-12">
+                <h4>Related Sell Products</h4>
+            </div>
+            
+            <!--Shop Item-->
+            {% for item in sell_product_related %}
+                {% if item.categories.first == sell.categories.first %}
+                    {% if item.id != sell.id %}
+                    <div class="shop-item col-md-3 col-sm-6 col-xs-12">
+                        <div class="inner-box">
+                            <figure class="image-box">
+                                <a href="{% url 'sell:sell_product_detail' item.slug %}"><img src="{{ item.main_image.url }}" width="100em" height="200em" alt="" /></a>
+                            </figure>
+                            <!--Lower Content-->
+                            <div class="lower-content">
+                                <h3><a href="{% url 'sell:sell_product_detail' item.slug %}">{{item.title}}</a></h3>
+                                <a href="{% url 'sell:sell_product_detail' item.slug %}" class="cart-btn theme-btn btn-style-two">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

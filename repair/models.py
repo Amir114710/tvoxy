@@ -26,9 +26,19 @@ class Repair(models.Model):
     class Meta:
         ordering = ('-created',)
 
+class CategoryMobile(models.Model):
+    title = models.CharField(max_length=1500)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        ordering = ('-created',)
+
 class MobileRepair(models.Model):
     repair = models.ForeignKey(Repair , on_delete=models.CASCADE , related_name='mobile_repair')
-    categories = models.ManyToManyField(Category , related_name='mobile_repair_category')
+    categories = models.ManyToManyField(CategoryMobile , related_name='mobile_repair_category')
     slug = models.SlugField(null=True , unique=True)
     title = models.CharField(max_length=1500)
     image = models.ImageField(upload_to='repair/images')

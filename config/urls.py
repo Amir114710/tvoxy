@@ -15,8 +15,11 @@ urlpatterns = [
     path('business/' , include('business.urls')),
     path('charity/' , include('charity.urls')),
     path('shop/' , include('shop.urls')),
+    path('cart/' , include('cart.urls')),
     path('blog/' , include('blog.urls')),
     path('contactus/' , include('contactus.urls')),
+    path('sell/' , include('sell.urls')),
+    path('sell_cart/' , include('sell_cart.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -60,7 +60,6 @@ product_detail
                                 
                                     <div class="details-header">
                                         <h4>{{product.title}}</h4>
-                                        <div class="item-price">${{product.price}}</div>
                                     </div>
                                     <!--Text-->
                                     <div class="text">
@@ -68,38 +67,30 @@ product_detail
                                     </div>
                                     <!--Item Quantity-->
                                     <div class="other-options clearfix">
-                                        <form method="post" action="">
+                                        <form method="post" action="{% url 'cart:cart_add' product.slug %}">
                                             {% csrf_token %}
                                             <input type="number" id="inputQuantitySelector" class="form-control" aria-live="polite" data-bs-step="counter" name="quantity" title="quantity" value="0" min="0" max="10" step="1" data-bs-round="0" aria-label="Quantity selector">
                                             <br>
                                             <div class="form-group country col-md-12 col-sm-12 col-xs-12">
                                                 <div class="field-label">Color <sup>*</sup> </div>
-                                                <select class="form-control" name="country">
-                                                    {% for x in product.color.all %}
-                                                    <option>{{x.title}}</option>
+                                                <select class="form-control" name="color">
+                                                    {% for x in product.product_color.all %}
+                                                    <option>{{x.color}}</option>
                                                     {% endfor %}
                                                 </select>
                                             </div>
                                             <br>
                                             <div class="form-group country col-md-12 col-sm-12 col-xs-12">
                                                 <div class="field-label">Storage <sup>*</sup> </div>
-                                                <select class="form-control" name="country">
-                                                    {% for x in product.storage.all %}
-                                                    <option>{{x.title}}</option>
+                                                <select class="form-control" name="storage">
+                                                    {% for x in product.product_storage.all %}
+                                                    <option>{{x.storage}}</option>
                                                     {% endfor %}
                                                 </select>
-                                            </div>
-                                            <br>
-                                            <div class="form-group country col-md-12 col-sm-12 col-xs-12">
-                                                <div class="field-label">Region <sup>*</sup> </div>
-                                                <select class="form-control" name="country">
-                                                    {% for x in product.region.all %}
-                                                    <option>{{x.title}}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                            <br>
+                                                <br>
+                                                <br>
                                             <button type="submit" class="theme-btn btn-style-one add-to-cart">Add To Cart </button>
+                                            </div>
                                         </form>
                                     </div>
                                     
@@ -171,7 +162,7 @@ product_detail
                         <article class="post">
                             <figure class="post-thumb"><a href="{% url 'shop:product_detail' x.slug %}"><img src="{{x.main_image.url}}" alt="" width="50em" height="50em"></a></figure>
                             <h4><a href="{% url 'shop:product_detail' x.slug %}">{{x.title}}</a></h4>
-                            <div class="price">$ {{x.price}}</div>
+                            <div class="price"><a href="{% url 'repair_app:repair_detail' item.pk %}">Read More</a></div>                                
                         </article>
                         {% endfor %}
                         

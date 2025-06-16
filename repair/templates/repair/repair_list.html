@@ -19,13 +19,34 @@ repair
 <!--Shop Section-->
 <section class="shop-section shop-page">
     <div class="auto-container">
+        <div class="items-sorting">
+            <div class="row clearfix">
+                <div class="results-column col-md-6 col-sm-6 col-xs-12">
+                    <h4>Showing 1–8 of {{repair.count}} results</h4>
+                </div>
+                <div class="select-column pull-right col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <div class="dropdown" style="position: relative;left: 50em;top: 1.1em;width: 5em;height: 5em;">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#2E4C66 ;">
+                            Categories
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-top: -2em;">
+                            {% for item in category %}
+                            <a class="dropdown-item" href="{% url 'repair_app:category_detail' item.pk %}">{{item.title}}</a>
+                            {% endfor %}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row clearfix">
             <!--Shop Item-->
             {% for x in repair %}
             <div class="shop-item col-md-3 col-sm-6 col-xs-12">
                 <div class="inner-box">
                     <figure class="image-box">
-                        <a href="{% url 'repair_app:repair_detail' x.pk %}"><img src="{{x.image.url}}" alt="" /></a>
+                        <a href="{% url 'repair_app:repair_detail' x.pk %}"><img src="{{x.image.url}}" width="100em" height="200em" alt="" /></a>
                         <div class="product-tag">Sale</div>
                     </figure>
                     <!--Lower Content-->

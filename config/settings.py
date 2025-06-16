@@ -42,6 +42,9 @@ APPS = [
     'blog.apps.BlogConfig',
     'charity.apps.CharityConfig',
     'contactus.apps.ContactusConfig',
+    'cart.apps.CartConfig',
+    'sell.apps.SellConfig',
+    'sell_cart.apps.SellCartConfig',
 ]
 
 PACKAGES = [

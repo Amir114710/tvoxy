@@ -23,17 +23,22 @@ shop
             <div class="items-sorting">
                 <div class="row clearfix">
                     <div class="results-column col-md-6 col-sm-6 col-xs-12">
-                        <h4>Showing 1–8 of 23 results</h4>
+                        <h4>Showing 1–8 of {{products.count}} results</h4>
                     </div>
                     <div class="select-column pull-right col-md-3 col-sm-4 col-xs-12">
-                        <div class="form-group">
-                            <select name="sort-by">
-                                {% for x in categories %}
-                                <option>{{x.title}}</option>
-                                {% endfor %}
-                            </select>
+                    <div class="form-group">
+                        <div class="dropdown" style="position: relative;left: 50em;top: 1.1em;width: 5em;height: 5em;">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#2E4C66 ;">
+                            Categories
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-top: -2em;">
+                            {% for item in category %}
+                            <a class="dropdown-item" href="{% url 'shop:category-product' item.pk %}">{{item.title}}</a>
+                            {% endfor %}
+                        </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
                         
@@ -51,7 +56,6 @@ shop
                         <!--Lower Content-->
                         <div class="lower-content">
                         	<h3><a href="{% url 'shop:product_detail' x.slug %}">{{x.title}}</a></h3>
-                            <div class="price">${{x.price}}</div>
                             <a href="{% url 'shop:product_detail' x.slug %}" class="cart-btn theme-btn btn-style-two">Add to cart</a>
                         </div>
                     </div>

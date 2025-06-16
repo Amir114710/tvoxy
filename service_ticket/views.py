@@ -28,7 +28,7 @@ class CreateTicket(View):
         phone_model = request.POST.get('phone_model')
         discrip = request.POST.get('discrip')
         ticket = Ticket.objects.create(user = user , subject = subject , phone_brand = phone_brand , phone_model = phone_model , discription = discrip)
-        return redirect(f'http://127.0.0.1:8000/service/ticket_message/create/')
+        return redirect(f'http://127.0.0.1:8000/service/ticket_message/create/{ticket.id}')
     
 class TicketDeleteView(View):
     def get(self , request , pk):

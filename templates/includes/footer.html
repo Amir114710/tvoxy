@@ -30,7 +30,7 @@
                             <div class="post">
                                 <div class="text"><a href="{% url 'blog:article_list' %}">blog</a></div>
                                 <div class="text"><a href="{% url 'contactus:contactus_main' %}">contact us</a></div>
-                                <div class="text"><a href="{% url 'about_us_app:comeing_soon' %}">Online Support</a></div>
+                                <div class="text"><a href="{% url 'service_app:service_attr' %}">Online Support</a></div>
                             </div>
                         </div>
                     </div>
@@ -47,10 +47,10 @@
                         <!--In Touch-->
                         <div class="footer-widget in-touch">
                             <h2>sell</h2>
-                            <ul>
-                                <li>Sell My Laptop</li>
-                                <li>Sell My Mobile</li>
-                                <li>Sell My Tablet</li>
+                            <ul style="margin-left: -1.8em;">
+                                {% for cate in category %}
+                                <li>Sell {{cate.title}}</li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                     <div class="footer-column col-md-6 col-sm-6 col-xs-12">
                         <!--Number Widget-->
                         <div class="footer-widget number-widget">
-                            <h3><span class="icon flaticon-technology"></span>+44-7777251111</h3>
+                            <h3><span class="icon flaticon-technology"></span>07777239555</h3>
                             <div class="text">Monday to Friday 9am to 5pm</div>
                         </div>
                     </div>
@@ -109,25 +109,14 @@
 <div class="popup-inner">
 
     <div class="search-form">
-        <form method="post" action="index.html">
+        <form method="get" action="{% if request.resolver_match.url_name == 'shop_main' %}{% url 'shop:search' %}{% endif %}{% if request.resolver_match.url_name == 'main_sell' %}{% url 'sell:search' %}{% endif %}{% if request.resolver_match.url_name == 'repair' %}{% url 'repair_app:search' %}{% endif %}" id="parent_id">
             <div class="form-group">
                 <fieldset>
-                    <input type="search" class="form-control" name="search-input" value="" placeholder="Search Here" required >
+                    <input type="search" class="form-control" name="q" value="" placeholder="Search Here" required >
                     <input type="submit" value="Search" class="theme-btn">
                 </fieldset>
             </div>
-        </form>
-        
-        <br>
-        <h3>Recent Search Keywords</h3>
-        <ul class="recent-searches">
-            <li><a href="#">Business</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">SEO</a></li>
-            <li><a href="#">Logistics</a></li>
-            <li><a href="#">Freedom</a></li>
-        </ul>
-    
+        </form>    
     </div>
     
 </div>

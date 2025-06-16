@@ -6146,3 +6146,13 @@ ul,li{
 		transform: translateX(-50%) scale(1.5);
 	}
 }
+#responsive-2button{
+	display: none!important;
+}
+#dropdown-button-style{
+	position: relative;
+	left: 24em;
+	top:-2.8em;
+	width: 5em;
+	height: 5em;
+}

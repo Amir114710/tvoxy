@@ -38,7 +38,9 @@
 	.page-wrapper{
 		overflow:hidden;	
 	}
-	
+	#responsive-2button{
+		display: none!important;
+	}
 }
 
 @media only screen and (min-width: 768px){
@@ -47,6 +49,9 @@
 		display:block !important;
 		visibility:hidden;
 		opacity:0;
+	}
+	#responsive-2button{
+		display: none!important;
 	}
 }
 
@@ -190,7 +195,16 @@
 	.faqs-section .content-side{
 		padding-right:15px;
 	}
-	
+	#responsive-2button{
+		display: block!important;
+	}
+	#dropdown-button-style{
+	position: relative;
+	left: 18em;
+	top:-2.8em;
+	width: 5em;
+	height: 5em;
+	}
 }
 
 @media only screen and (max-width: 767px){
@@ -425,7 +439,7 @@
 	
 	.main-menu .navbar-collapse > .navigation li.dropdown:after,
 	.main-menu .navigation > li > ul:before{
-		display:none !important;	
+		display:block !important;	
 	}
 	
 	.main-header .social-links-one{
@@ -505,7 +519,16 @@
 	.page-title .bread-crumb{
 		padding-top:0px;
 	}
-	
+	#responsive-2button{
+		display: block!important;
+	}
+	#dropdown-button-style{
+	position: relative;
+	left: 18em;
+	top:-2.8em;
+	width: 5em;
+	height: 5em;
+	}
 }
 
 @media only screen and (max-width: 599px){
@@ -655,5 +678,15 @@
 		left:0px;
 		top:0px;
 		margin-bottom:20px;	
+	}
+	#responsive-2button{
+		display: block!important;
+	}
+	#dropdown-button-style{
+	position: relative;
+	left: 18em;
+	top:-2.8em;
+	width: 5em;
+	height: 5em;
 	}
 }

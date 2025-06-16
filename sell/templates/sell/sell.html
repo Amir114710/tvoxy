@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+sell
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Sell</li>
+        </ul>
+        <h1>Sell</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Shop Section-->
+<section class="shop-section shop-page">
+    <div class="auto-container">
+        <!--Sort By-->
+        <div class="items-sorting">
+            <div class="row clearfix">
+                <div class="results-column col-md-6 col-sm-6 col-xs-12">
+                    <h4>Showing 1–8 of {{sell.count}} results</h4>
+                </div>
+                <div class="select-column pull-right col-md-3 col-sm-4 col-xs-12">
+                    <div class="form-group">
+                        <div class="dropdown" style="position: relative;left: 50em;top: 1.1em;width: 5em;height: 5em;">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#2E4C66 ;">
+                            Categories
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-top: -2em;">
+                            {% for item in category %}
+                            <a class="dropdown-item" href="{% url 'sell:category_detail' item.pk %}">{{item.title}}</a>
+                            {% endfor %}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
+        <div class="row clearfix">
+            <!--Shop Item-->
+            
+            {% for item in sell %}
+            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <figure class="image-box">
+                        <a href="{% url 'sell:sell_product_detail' item.slug %}"><img src="{{item.main_image.url}}" alt=""width="100em" height="200em" /></a>
+                        <div class="product-tag">Sale</div>
+                    </figure>
+                    <!--Lower Content-->
+                    <div class="lower-content">
+                        <h3><a href="{% url 'sell:sell_product_detail' item.slug %}">{{item.title}}</a></h3>
+                        <a href="{% url 'sell:sell_product_detail' item.slug %}" class="cart-btn theme-btn btn-style-two">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        
+        <div class="text-center">
+            	<!-- Styled Pagination -->
+                <div class="styled-pagination">
+                    <ul>
+                        {% if page_obj.has_previous %}
+                        <li><a class="next" href="?page={{page_obj.previous_number}}"><span class="fa fa-angle-left"></span></a></li>
+                        {% endif %}
+                        {% for i in page_obj.page_range %}
+                            {% if page_obj.number == i %}
+                            <li class="active"><a href="?page={{i}}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">{{ i }}</a></li>
+                            {% else %}
+                            <li><a href="?page={{i}}{% if request.GET.q %}&q={{request.GET.q}}{% endif %}">{{ i }}</a></li>
+                            {% endif %}
+                      {% endfor %}
+                        <!--<li><a href="#" class="active">{{page_obj.number}}</a></li>-->
+                        {% if page_obj.has_next %}
+                        <li><a class="next" href="?page={{page_obj.next_number}}"><span class="fa fa-angle-right"></span></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        
+    </div>
+</section>
+{% endblock %}

@@ -21,7 +21,8 @@ class CartAddView(View):
         mobile_reapir = get_object_or_404(MobileRepair , id = id)
         quantity = request.POST.get('quantity')
         cart = Cart(request)
-        cart.add(mobile_reapir , quantity)
+        if int(quantity) > 0:
+            cart.add(mobile_reapir , quantity)
         cart = Cart(self.request)
         return redirect('repair_cart_app:cart_main')
     
