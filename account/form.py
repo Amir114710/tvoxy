@@ -20,12 +20,13 @@ class OtpForm(forms.Form):
 class Edite_Profile_Form(forms.ModelForm):
     class Meta:
         model=User
-        fields=['Full_name', 'username' , 'phone' , 'postal_code']
+        fields=['Full_name', 'username' , 'phone' , 'postal_code' , 'is_business_user' , 'account_number' , 'intrducer']
         widgets={
             'username':forms.TextInput(attrs={'class': 'form-control' , 'placeholder':''}),
             'Full_name' :forms.TextInput(attrs={'class': 'form-control' , 'placeholder':''}),
             'phone' :forms.TextInput(attrs={'class': 'form-control' , 'placeholder':''}),
             'postal_code' :forms.TextInput(attrs={'class': 'form-control' , 'placeholder':''}),
+            'account_number' :forms.TextInput(attrs={'class': 'form-control' , 'placeholder':''}),
         }
 
 class AddressCreationForm(forms.ModelForm):

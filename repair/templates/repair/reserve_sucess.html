@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{% endblock %}
+{% block content %}
+<section class="page-title" style="background-image: url();">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Reserve</li>
+            <li class="active">Reserve Form Success</li>
+        </ul>
+        <h1>Success</h1>
+        <br>
+        <a href="{% url 'home:main' %}" class="read-more theme-btn btn-style-two" style="text-align: center;-ms-flex-item-align: center;">Home</a>
+    </div>
+</section>
+{% endblock %}

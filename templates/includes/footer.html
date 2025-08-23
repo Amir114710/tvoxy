@@ -25,16 +25,17 @@
                     <!--Footer Column-->
                     <div class="footer-column col-md-6 col-sm-6 col-xs-12">
                         <!--Recent Widget-->
-                        <div class="footer-widget recent-widget">
+                        <div class="footer-widget recent-widget" style="margin-left: 5em;margin-top:0em;">
                             <h2>Support</h2>
                             <div class="post">
-                                <div class="text"><a href="{% url 'blog:article_list' %}">blog</a></div>
-                                <div class="text"><a href="{% url 'contactus:contactus_main' %}">contact us</a></div>
-                                <div class="text"><a href="{% url 'service_app:service_attr' %}">Online Support</a></div>
+                                <div class="text"><a href="{% url 'blog:article_list' %}" style="color: white;">Blog</a></div>
+                                <div class="text" style="margin-top: -0.8em;"><a href="{% url 'contactus:contactus_main' %}" style="color: white;">Contact us</a></div>
+                                <div class="text" style="margin-top: -0.8em;"><a href="{% url 'service_app:service_attr' %}" style="color: white;">Online Support</a></div>
+                                <div class="text" style="margin-top: -0.8em;"><a href="{% url 'business_app:business' %}" style="color: white;">Business</a></div>
+                                <div class="text" style="margin-top: -0.8em;"><a href="{% url 'charity:charity_main' %}" style="color: white;">Charity</a></div>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
             
@@ -45,11 +46,11 @@
                     <!--Footer Column-->
                     <div class="footer-column col-md-6 col-sm-6 col-xs-12">
                         <!--In Touch-->
-                        <div class="footer-widget in-touch">
+                        <div class="footer-widget in-touch" style="margin-left: 5em;">
                             <h2>sell</h2>
                             <ul style="margin-left: -1.8em;">
                                 {% for cate in category %}
-                                <li>Sell {{cate.title}}</li>
+                                <li><a href="" style="color: white;">Sell {{cate.title}}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -58,9 +59,12 @@
                     <!--Footer Column-->
                     <div class="footer-column col-md-6 col-sm-6 col-xs-12">
                         <!--Number Widget-->
-                        <div class="footer-widget number-widget">
+                        <div class="footer-widget number-widget" style="margin-top: -0.5em;">
                             <h3><span class="icon flaticon-technology"></span>07777239555</h3>
-                            <div class="text">Monday to Friday 9am to 5pm</div>
+                            <div class="text">Address : Tech cell limited-TVOXY 1st floor , office 106 , Grand Arcade , Apex House , London N12 0EH
+                                <br>
+                                E-mail : Info@tvoxy.co.uk
+                            </div>
                         </div>
                     </div>
                     

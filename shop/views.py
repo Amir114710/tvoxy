@@ -1,10 +1,10 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import *
-
+from mixins import *
 from blog.models import Tag
 from .models import Category, Product
 
-class ShopView(ListView):
+class ShopView(LogoutRequirdMixins , ListView):
     template_name = 'shop/shop.html'
     context_object_name = 'products'
     paginate_by = 8

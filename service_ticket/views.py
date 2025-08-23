@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.views.generic import View , DeleteView
 from .models import *
 from home.models import *
+from mixins import *
 
 class ServiceAttrView(View):
     template_name = 'service/service.html'
@@ -17,7 +18,7 @@ class TicketListView(View):
         tickets = Ticket.objects.filter(user=request.user)
         return render(request , self.template_name , {'tickets':tickets})
     
-class CreateTicket(View):
+class CreateTicket(LogoutRequirdMixins ,View):
     template_name = 'service/ticket_create.html'
     def get(self , request):
         return render(request , self.template_name , {})
@@ -30,13 +31,13 @@ class CreateTicket(View):
         ticket = Ticket.objects.create(user = user , subject = subject , phone_brand = phone_brand , phone_model = phone_model , discription = discrip)
         return redirect(f'http://127.0.0.1:8000/service/ticket_message/create/{ticket.id}')
     
-class TicketDeleteView(View):
+class TicketDeleteView(LogoutRequirdMixins ,View):
     def get(self , request , pk):
         ticket = get_object_or_404(Ticket , id=pk)
         ticket.delete()
         return redirect(reverse('service_app:ticket_list'))
 
-class TicketMessageCreateView(View):
+class TicketMessageCreateView(LogoutRequirdMixins ,View):
     template_name = 'service/ticket_message_form.html'
     def get(self , request , id):
         ticket = get_object_or_404(Ticket , id=id)

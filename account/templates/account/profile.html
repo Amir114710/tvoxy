@@ -1,93 +1,121 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static "css/profile-style.css" %}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Profile</title>
-</head>
-<body>
-    <div class="container">
-        <div class="main-body">
-        
-              <!-- Breadcrumb -->
-              <nav aria-label="breadcrumb" class="main-breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{% url 'home:main' %}">Home</a></li>
-                  <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-                </ol>
-              </nav>
-              <!-- /Breadcrumb -->
-        
-              <div class="row gutters-sm">
-                <div class="col-md-4 mb-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex flex-column align-items-center text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                        <div class="mt-3">
-                          <h4>{{request.user.username}}</h4>
-                          <p class="text-secondary mb-1">{{request.user.email}}</p>
-                        </div>
-                      </div>
-                    </div>
+{% block title %}
+{{request.user.email}}
+{% endblock %}
+{% block content %}
+  <!--Page Title-->
+  <section class="page-title" style="background-image: url(images/background/3.jpg);">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+              <li><a href="index.html">Home</a></li>
+              <li class="active">Profile</li>
+          </ul>
+        <h1>Profile</h1>
+      </div>
+  </section>
+  <!--End Page Title-->
+  
+  <!--Sidebar Page / Shop Container-->
+  <div class="sidebar-page-container shop-container">
+      <div class="auto-container">
+          <div class="row clearfix">
+      
+              <!--Content Side-->
+              <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
+                  <!--Shop Single-->
+                  <div class="shop-single shop-page">
+
+                      <!--Product Details Section-->
+                      <section class="product-details">
+                          <!--Basic Details-->
+                          <div class="basic-details">
+                              <div class="row clearfix">
+                                  <div class="image-column col-md-6 col-sm-6 col-xs-8">
+                                      <!--<figure class="image-box"><img src="images/resource/products/image-9.jpg" alt=""></figure>-->
+                                      <div class="carousel-outer wow fadeInLeft"style="margin-left: -5em;">
+                  
+                                          <ul class="image-carousel">
+                                              <li><a href="{% static "images/avatar7.png" %}" class="lightbox-image" title="Image Caption Here"><img src="{% static "images/avatar7.png" %}" alt=""></a></li>
+                                          </ul>
+                                          
+                                      </div>
+                                      
+                                  </div>
+                                  <div class="info-column col-md-6 col-sm-6 col-xs-12" >
+                                  
+                                      <div class="details-header">
+                                          <h4>{{request.user.email}}</h4>
+                                          {% if request.user.is_business_user %}
+                                          <div class="item-price">credit : {{request.user.credit}}</div>
+                                          {% endif %}
+                                      </div>
+                  <!--Text-->
+                                      <div class="text">
+                                          <p>Full_name : {{request.user.Full_name}}
+                                            <br>
+                                            Post Code : {{request.user.postal_code}}
+                                            <br>
+                                            account_number : {{request.user.account_number}}
+                                          </p>
+                                          <a href="{% url 'account:logout' %}"><button class="btn btn-danger">logout</button></a>
+                                          <a href="{% url 'account:edit_profile' %}"><button class="btn btn-primary">edite_profile</button></a>
+                                          <br><br>
+                                          <h4>Addresses:</h4>
+                                          <ul>
+                                            {% for x in request.user.addresses.all %}
+                                                <li>address: {{x.address}}
+                                                    <br>
+                                                    postal_code : {{x.postal_code}}
+                                                </li>
+                                                <hr>
+                                            {% endfor %}
+                                            <li><a href="{% url 'account:add_address' %}?next={% url 'account:profile' %}"><button class="btn btn-primary">Add Address</button></a></li>
+                                          </ul>
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                          <!--Basic Details-->
+                      </section>
                   </div>
-                </div>
-                <div class="col-md-8">
-                  <div class="card mb-3">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Full Name</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                          {{request.user.Full_name}}
-                        </div>
+              </div>				
+              <!--Sidebar-->	
+              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <aside class="sidebar">
+                      <!-- Products Widget -->
+                      <div class="sidebar-widget products-widget wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                          <div class="sidebar-title"><h2>orders</h2></div>
+                          
+                          <article >
+                            <h3>Shop orders:</h3>
+                              <h4><a href="{% url 'account:shop_order' %}"><button class="btn btn-danger">shop orders</button></a></h4>
+                          </article>
+                          <br>
+                          <article>
+                            <h3>Repair orders:</h3>
+                              <h4><a href="{% url 'account:repair_order' %}"><button class="btn btn-danger">repair orders</button></a></h4>
+                          </article>
+                          <br>
+                          <article>
+                            <h3>Sell orders:</h3>
+                              <h4><a href="{% url 'account:sell_order' %}"><button class="btn btn-danger">sell orders</button></a></h4>
+                          </article>   
+                          <br>
+                            {% if request.user.is_business_user %}
+                            <article>
+                            <h3>Report:</h3>
+                              <h4><a href="{% url 'account:report' %}"><button class="btn btn-danger">Report</button></a></h4>
+                            </article>
+                            {% endif %}                          
                       </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Email</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                          {{request.user.email}}
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Phone</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                          {{request.user.phone}}
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Postalcode</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary">
-                          {{request.user.postal_code}}
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <a class="btn btn-info " target="__blank" href="{% url 'account:edit_profile' %}">Edit</a>
-                          <a class="btn btn-danger " target="__blank" href="{% url 'account:logout' %}">Logout</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>    
-                </div>
+                      
+                  </aside>
               </div>
-    
-            </div>
-        </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-</html>
+              <!--Sidebar-->  
+
+          </div>
+      </div>
+</div>
+{% endblock %}

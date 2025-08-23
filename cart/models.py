@@ -2,13 +2,14 @@ from django.db import models
 from account.models import User
 from datetime import datetime
 from shop.models import Product
+from account.models import Address
 
 class Order(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE , related_name='orders_product')
     total_price = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     is_pay = models.BooleanField(default=False)
-    addresses = models.TextField(blank=True , null=True)
+    addresses = models.ForeignKey(Address , on_delete=models.CASCADE , related_name='addresses' , null=True , blank=True)
     image_payed = models.FileField(upload_to='pay/image', null=True , blank=True)
     DeliveryDate = models.DateTimeField(null=True , blank=True)
 

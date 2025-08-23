@@ -1,8 +1,10 @@
 from django.shortcuts import render , HttpResponse
 from django.views.generic import TemplateView , ListView , View , DetailView
 from .models import *
+from mixins import *
+from .extention import send_verification_email
 
-class SellView(ListView):
+class SellView(LogoutRequirdMixins , ListView):
     template_name = 'sell/sell.html'
     model = SellProduct
     context_object_name = 'sell'
@@ -40,3 +42,42 @@ class SearchBox(TemplateView):
         q = request.GET.get('q')
         queryset =  SellProduct.objects.filter(title__icontains = q)
         return render(request, self.template_name, {'sell': queryset})
+    
+class SellCategoryPhone(TemplateView):
+    template_name = 'sell/sell_category.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['sell'] = PhoneCategory.objects.all()
+        return context
+
+class CategoryPhoneView(View):
+    template_name = 'sell/sell_category_detail.html'
+    def get(self , request , pk):
+        category = PhoneCategory.objects.get(pk=pk)
+        category_data = category.phone_model.all()
+        condition = Condition.objects.all()
+        storage = Storage.objects.all()
+        return render(request , self.template_name , {'category_data':category_data ,'storage':storage , 'condition':condition})
+
+class CategoryFormView(View):
+    def post(self , request):
+        phone_model = request.POST.get('phone_model')
+        Full_name = request.POST.get('Full_name')
+        phone_number = request.POST.get('phone_number')
+        storage = request.POST.get('storage')
+        condition = request.POST.get('condition')
+        for x in PhoneModel.objects.all():
+            if x.title == phone_model:
+                price3 = x.price
+                sell1 = x.sell_condition.all()
+                sell2 = x.sell_storage.all()
+        for x in sell2:
+            if storage == x.storage:
+                price1 = x.price
+        for x in sell1:
+            if condition == x.condition:
+                price2 = x.price
+        total_price = price1 + price2 + price3
+        Sell.objects.create(user = request.user , Full_name=Full_name , phone_number=phone_number , phone=phone_model , condition=condition , storage=storage, total_price=total_price)
+        send_verification_email()
+        return render(self.request , 'sell/sell_sucess.html', {'total_price':total_price})

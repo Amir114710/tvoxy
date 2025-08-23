@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+after_pay
+{% endblock %}
+{% block content %}
+  <!--Page Title-->
+  <section class="page-title" style="background-image: url(images/background/3.jpg);">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+              <li><a href="index.html">Home</a></li>
+              <li class="active">AfterPay</li>
+          </ul>
+        <h1>AfterPay</h1>
+      </div>
+  </section>
+  <!--End Page Title-->
+  
+  <!--Sidebar Page / Shop Container-->
+  <div class="sidebar-page-container shop-container">
+      <div class="auto-container">
+          <div class="row clearfix">
+      
+              <!--Content Side-->
+              <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
+                  <!--Shop Single-->
+                  <div class="shop-single shop-page">
+
+                      <!--Product Details Section-->
+                      <section class="product-details">
+                          <!--Basic Details-->
+                          <div class="basic-details">
+                              <div class="row clearfix">
+                                  <div class="image-column col-md-6 col-sm-6 col-xs-8">
+                                      <!--<figure class="image-box"><img src="images/resource/products/image-9.jpg" alt=""></figure>-->
+                                      <div class="carousel-outer wow fadeInLeft">
+                  
+                                          <ul class="image-carousel">
+                                              <li><a href="{% static "images/QR_code_for_mobile_English_Wikipedia.svg.webp" %}" class="lightbox-image" title="Image Caption Here"><img src="{% static "images/QR_code_for_mobile_English_Wikipedia.svg.webp" %}" width="200em" height="200em" alt=""></a></li>
+                                          </ul>
+                                          
+                                      </div>
+                                      
+                                  </div>
+                                  <div class="info-column col-md-6 col-sm-6 col-xs-12" >
+                                  
+                                      <div class="details-header">
+                                          <h4>Send this product to us via this QR code.</h4>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--Basic Details-->
+                      </section>
+                  </div>
+              </div>				
+              <!--Sidebar-->	
+              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <aside class="sidebar">
+                      <!-- Products Widget -->
+                      <div class="sidebar-widget products-widget wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">                          
+                      </div>
+                      
+                  </aside>
+              </div>
+              <!--Sidebar-->  
+
+          </div>
+      </div>
+</div>
+{% endblock %}

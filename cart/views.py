@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect , get_object_or_404
 from django.views.generic import View , TemplateView
 from django.urls import reverse
-from account.models import Address
+from account.models import Address, User
 from cart.cart_module import Cart
 from shop.models import Product
 from .cart_module import Cart
@@ -74,7 +74,16 @@ class ApplyDiscountView(View):
 class ApplyAddress(View):
     def post(self , request , pk):
         order = get_object_or_404(Order , id=pk)
-        address = request.POST.get('address')
-        order.addresses = address
-        order.save()
-        return redirect('pay:main_pay' , order.id)
+        address = request.POST.get('adrres')
+        print(address)
+        addresses = Address.objects.all()
+        for addres in addresses:
+            if addres.address == address:
+                order.addresses = addres
+                order.save()
+        user = User.objects.all()
+        for user in user:
+            if request.user.intrducer.email == user.email:
+                user.credit += 10
+                user.save()
+        return redirect('pay:create_payment')

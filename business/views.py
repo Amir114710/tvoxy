@@ -1,6 +1,7 @@
 from django.shortcuts import render , redirect
 from django.views.generic import View , TemplateView
 from .models import *
+from mixins import *
 
 class BusinessView(TemplateView):
     template_name = 'business/business.html'
@@ -10,7 +11,7 @@ class BusinessView(TemplateView):
         context['attr'] = BusinessAttr.objects.all()[:6]
         return context
     
-class BusinessFormView(View):
+class BusinessFormView(LogoutRequirdMixins ,View):
     template_name = 'business/business_form.html'
     def get(self , request):
         return render(request  , self.template_name , {})

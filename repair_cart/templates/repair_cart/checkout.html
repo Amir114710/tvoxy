@@ -35,7 +35,7 @@ checkout
                                         {% if request.user.addresses.all %}
                                         <select name="adrres">
                                             {% for address in request.user.addresses.all %}
-                                            <option>{{address.address}} ---- {{address.phone}}</option>
+                                            <option>{{address.address}}</option>
                                             {% endfor %}
                                         </select>
                                         {% else %}

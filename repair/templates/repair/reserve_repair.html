@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+ReservePhone
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url();">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Reserve</li>
+            <li class="active">Reserve Form</li>
+        </ul>
+        <h1>Reserve Form</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Feedback-->
+<div class="feedback-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <!--Content Side-->	
+            <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <!--Feedback Form-->
+                <div class="default-form feedback-form">
+                    <!--Sec Title Two-->
+                    <div class="sec-title-two">
+                        <h2>Reserve Form</h2>
+                    </div>
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="row clearfix">
+                            <!--Form Group-->
+                            <div class="form-group country col-md-12 col-sm-12 col-xs-12">
+                                <div class="field-label">Date <sup>*</sup> </div>
+                                <select class="form-control" name="dates">
+                                    {% for x in dates %}
+                                    {% if x.quantity > 0 %}
+                                    <option value="{{x.day}}-{{x.time}}">{{x.day}}-{{x.time}}</option>
+                                    {% else %}
+                                    <option value="{{x.day}}-{{x.time}}" disabled>{{x.day}}-{{x.time}}-نا موجود</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group country col-md-12 col-sm-12 col-xs-12">
+                                <div class="field-label">RepairKind <sup>*</sup> </div>
+                                <select class="form-control" name="repair_kinds">
+                                    {% for x in repair_kinds %}
+                                    <option value="{{x.title}}">{{x.title}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <!--Form Group-->
+                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                <div class="field-label">PhoneName <sup>*</sup></div>
+                                <input type="text" name="model_phone" value="" placeholder="" required>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                <div class="field-label">Full_name <sup>*</sup></div>
+                                <input type="text" name="Full_name" value="" placeholder="" required>
+                            </div>
+                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                <div class="field-label">PhoneNumber <sup>*</sup></div>
+                                <input type="text" name="phone_number" value="" placeholder="" required>
+                            </div>
+                            <!--Form Group-->
+                            <div class="form-group col-lg-12 col-sm-12 col-xs-12">
+                                <div class="field-label">discription <sup>*</sup></div>
+                                <textarea name="description" placeholder=""></textarea>
+                            </div>
+                            <!--Form Group-->
+                            <div class="form-group text-left col-md-12 col-xs-12"><button type="submit" class="theme-btn btn-style-three">SUBMIT</button></div>
+                        </div>
+                    
+                    </form>
+                </div>
+            </div>
+            <!--Content Side-->
+        </div>
+    </div>
+</div>
+{% endblock %}

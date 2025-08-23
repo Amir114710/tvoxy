@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect , get_object_or_404
 from django.views.generic import View , TemplateView
 from django.urls import reverse
-from account.models import Address
+from account.models import Address, User
 from sell_cart.cart_module import Cart
 from sell.models import SellProduct
 from .cart_module import Cart
@@ -44,12 +44,12 @@ class CartDeleteView(View):
         cart.delete(id)
         return redirect(reverse('sell:main_sell'))
     
-class OrderDetailView(View):
+class OrderDetailView(LogoutRequirdMixins , View):
     def get(self , request , pk):
         order = get_object_or_404(Order , id=pk)
         return render(request , 'sell_cart/checkout.html' , {'order':order})
 
-class OrderCreationView(View):
+class OrderCreationView(LogoutRequirdMixins ,View):
     def get(self , request):
         cart = Cart(request)
         order = Order.objects.create(user = request.user , total_price = cart.total())
@@ -59,7 +59,7 @@ class OrderCreationView(View):
         cart.remove_cart()
         return redirect('sell_cart:order_detail' , order.id)
     
-class ApplyDiscountView(View):
+class ApplyDiscountView(LogoutRequirdMixins ,View):
     def post(self , request , pk):
         code = request.POST.get('discount_code')
         order = get_object_or_404(Order , id=pk)
@@ -71,11 +71,20 @@ class ApplyDiscountView(View):
         discount_code.quantity -= 1
         discount_code.save()
         return redirect('sell_cart:order_detail' , order.id)
-
+    
 class ApplyAddress(View):
     def post(self , request , pk):
         order = get_object_or_404(Order , id=pk)
-        address = request.POST.get('address')
-        order.addresses = address
-        order.save()
-        return redirect('pay:main_pay' , order.id)
+        address = request.POST.get('adrres')
+        print(address)
+        addresses = Address.objects.all()
+        for addres in addresses:
+            if addres.address == address:
+                order.addresses = addres
+                order.save()
+        user = User.objects.all()
+        for user in user:
+            if request.user.intrducer.email == user.email:
+                user.credit += 10
+                user.save()
+        return redirect('sell_pay:after_pay')

@@ -1,6 +1,8 @@
 from django.shortcuts import render , get_object_or_404 , redirect
 from django.views.generic import View , DetailView , ListView , TemplateView
 from .models import *
+from mixins import *
+from .extention import send_verification_email
 
 class RepairView(ListView):
     template_name = 'repair/repair_list.html'
@@ -60,3 +62,30 @@ class SearchBox(TemplateView):
         q = request.GET.get('q')
         queryset =  Repair.objects.filter(title__icontains = q)
         return render(request, self.template_name, {'repair': queryset})
+    
+class RepairInfo(View):
+    template_name = 'repair/repair2_detail.html'
+    def get(self , request):
+        repair_info = RepairInfoModel.objects.all()[:1]
+        brands = Brand.objects.all()[:5]
+        attr = RepairAttributes.objects.all()[:3]
+        return render(request , self.template_name , {'brands':brands , 'repair_info':repair_info , 'attr':attr})
+
+class RepairReservation(LogoutRequirdMixins ,View):
+    template_name = 'repair/reserve_repair.html'
+    def get(self , request):
+        repair_kinds = RepairKind.objects.all()
+        dates = DateTimeModel.objects.all()
+        return render(request , self.template_name , {'repair_kinds':repair_kinds , 'dates':dates})
+    def post(self , request):
+        user = request.user
+        dates = request.POST.get('dates')
+        repair_kinds = request.POST.get('repair_kinds')
+        model_phone = request.POST.get('model_phone')
+        Full_name = request.POST.get('Full_name')
+        phone_number = request.POST.get('phone_number')
+        description = request.POST.get('description')
+        Reservation.objects.create(user=user , day_time=dates , repair_kind=repair_kinds , model_phone=model_phone , Full_name=Full_name , phone_number=phone_number , description=description)
+        send_verification_email()
+        return render(request , 'repair/reserve_sucess.html' , {})
+        

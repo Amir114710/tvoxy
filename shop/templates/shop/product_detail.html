@@ -162,7 +162,7 @@ product_detail
                         <article class="post">
                             <figure class="post-thumb"><a href="{% url 'shop:product_detail' x.slug %}"><img src="{{x.main_image.url}}" alt="" width="50em" height="50em"></a></figure>
                             <h4><a href="{% url 'shop:product_detail' x.slug %}">{{x.title}}</a></h4>
-                            <div class="price"><a href="{% url 'repair_app:repair_detail' item.pk %}">Read More</a></div>                                
+                            <div class="price"><a href="{% url 'shop:product_detail' x.slug %}">Read More</a></div>                                
                         </article>
                         {% endfor %}
                         

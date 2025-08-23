@@ -10,4 +10,6 @@ urlpatterns = [
     path('category/<int:pk>' , CategoryProductView.as_view() , name='category_detail'),
     path('category/mobile/<int:pk>' , CategoryMobileProductView.as_view() , name='category_mobile_detail'),
     path('search' , SearchBox.as_view() , name='search'),
+    path('repair_info' , RepairInfo.as_view() , name='repair_info'),
+    path('repair_reserve' , RepairReservation.as_view() , name='repair_reserve')
 ]

@@ -42,8 +42,49 @@ class SellProduct(models.Model):
         ordering = ('-created',)
         get_latest_by = 'created'
 
+    
+class PhoneCategory(models.Model):
+    title = models.CharField(max_length=550 , null=True , blank=True)
+    image = models.FileField(upload_to='sell/image' , null=True , blank=True)
+    created = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        ordering = ('-created',)
+
+class PhoneModel(models.Model):
+    title = models.CharField(max_length=550 , null=True , blank=True)
+    category = models.ManyToManyField(PhoneCategory , related_name='phone_model' , null=True , blank=True)
+    price = models.IntegerField(default=0 , null=True , blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        ordering = ('-created',)
+
+class Sell(models.Model):
+    user = models.ForeignKey(User , on_delete=models.CASCADE , null=True , blank=True)
+    Full_name = models.CharField(max_length=1050 , null=True , blank=True)
+    phone_number = models.CharField(max_length=1050 , null=True , blank=True)
+    phone = models.CharField(max_length=1050 , null=True , blank=True)  
+    condition = models.CharField(max_length=1050 , null=True , blank=True)
+    storage = models.CharField(max_length=1050 , null=True , blank=True)
+    total_price = models.IntegerField(default=0 , null=True , blank=True)
+    created = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.Full_name} -- {self.phone}'
+    
+    class Meta:
+        ordering = ('-created',)
+    
+
 class Storage(models.Model):
-    sell_product = models.ForeignKey(SellProduct , on_delete=models.CASCADE , related_name='sell_storage')
+    sell_product = models.ForeignKey(PhoneModel , on_delete=models.CASCADE , related_name='sell_storage')
     storage = models.CharField(max_length=1500)
     price = models.BigIntegerField(null=True , blank=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -52,7 +93,7 @@ class Storage(models.Model):
         return self.storage
     
 class Condition(models.Model):
-    sell_product = models.ForeignKey(SellProduct , on_delete=models.CASCADE , related_name='sell_condition')
+    sell_product = models.ForeignKey(PhoneModel , on_delete=models.CASCADE , related_name='sell_condition')
     condition = models.CharField(max_length=1500)
     discription = RichTextUploadingField(null=True)
     price = models.BigIntegerField(null=True , blank=True)

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Report
+{% endblock %}
+{% block content %}
+  <!--Page Title-->
+  <section class="page-title" style="background-image: url(images/background/3.jpg);">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+              <li><a href="index.html">Home</a></li>
+              <li class="active">Report</li>
+          </ul>
+        <h1>Report</h1>
+      </div>
+  </section>
+  <!--End Page Title-->
+  
+  <!--Sidebar Page / Shop Container-->
+  <div class="sidebar-page-container shop-container">
+      <div class="auto-container">
+          <div class="row clearfix">
+      
+              <!--Content Side-->
+              <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
+                  <!--Shop Single-->
+                  <div class="shop-single shop-page">
+
+                      <!--Product Details Section-->
+                      <section class="product-details">
+                          <!--Basic Details-->
+                          <div class="basic-details">
+                              <div class="row clearfix">
+                                  <div class="info-column col-md-6 col-sm-6 col-xs-12" >
+                                      <div class="details-header" id="download-area1">
+                                          <h4>Reports</h4>
+                                            {% for x in request.user.reports.all %}
+                                                <p>id : {{x.id}}</p>
+                                                <p>serial_number : {{x.serial_number}}</p>
+                                                <p>device_name : {{x.device_name}}</p>
+                                                <p>discription : {{x.dicription|safe}}</p>
+                                                <hr>
+                                            {% endfor %}
+                                    </div>
+                                    <button onclick="downloadSection()" class="btn btn-primary">📄 install</button>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--Basic Details-->
+                      </section>
+                  </div>
+              </div>				
+          </div>
+      </div>
+</div>
+{% endblock %}

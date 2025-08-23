@@ -20,6 +20,9 @@ urlpatterns = [
     path('contactus/' , include('contactus.urls')),
     path('sell/' , include('sell.urls')),
     path('sell_cart/' , include('sell_cart.urls')),
+    path('sell_pay/' , include('sell_pay.urls')),
+    path('repair_pay/' , include('repair_pay.urls')),
+    path('pay/' , include('pay.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

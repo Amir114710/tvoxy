@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView , View
 from .models import *
+from mixins import *
 
 class CharityView(TemplateView):
     template_name = 'charity/charity.html'
@@ -11,7 +12,7 @@ class CharityView(TemplateView):
         context['attr'] = CharityAttr.objects.all()[:1]
         return context
 
-class CharityFormView(View):
+class CharityFormView(LogoutRequirdMixins , View):
     template_name = 'charity/charity_form.html'
     def get(self , request):
         return render(request  , self.template_name , {})

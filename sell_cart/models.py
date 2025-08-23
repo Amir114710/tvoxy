@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import User
+from account.models import Address, User
 from datetime import datetime
 from sell.models import SellProduct
 
@@ -8,7 +8,7 @@ class Order(models.Model):
     total_price = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     is_pay = models.BooleanField(default=False)
-    addresses = models.TextField(blank=True , null=True)
+    addresses = models.ForeignKey(Address , on_delete=models.CASCADE , related_name='addresses_sell' , null=True , blank=True)
     image_payed = models.FileField(upload_to='pay/image', null=True , blank=True)
     DeliveryDate = models.DateTimeField(null=True , blank=True)
 

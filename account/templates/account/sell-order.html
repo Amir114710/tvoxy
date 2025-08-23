@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+cart
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Profile</li>
+        </ul>
+        <h1>View Sell Order</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Cart Section-->
+<section class="cart-section">
+    <div class="auto-container">
+        
+        <!--Cart Outer-->
+        <div class="cart-outer">
+            <div class="table-outer">
+                <table class="cart-table">
+                    <thead class="cart-header">
+                        <tr>
+                            <th class="prod-column">SellPRODUCT IMAGE</th>
+                            <th>SellPRODUCT TITLE</th>
+                            <th class="price">Price</th>
+                            <th>QUANTITY</th>
+                            <th>Storage</th>
+                            <th>Condition</th>
+                            <th>Total</th>
+                            <th>IS pay</th>
+                            <th>address</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% for item in orderitem %}
+                            {% if item.order.user.email == request.user.email %}
+                            <tr>
+                                <td class="prod-column">
+                                    <div class="column-box">
+                                        <figure class="prod-thumb"><a href="#"><img src="{{item.sell_product.main_image.url}}" alt=""></a></figure>
+                                    </div>
+                                </td>
+                                <td class="product-name">{{item.sell_product.title}}</td>
+                                <td class="price">${{item.sell_product.price}}</td>
+                                <td class="qty">{{item.quantity}}</td>
+                                <td class="qty">{{item.storage}}</td>
+                                <td class="qty">{{item.condition}}</td>
+                                <td class="sub-total">${{item.order.total_price}}</td>
+                                {% if item.order.is_pay %}
+                                <td class="sub-total">yes
+                                </td>
+                                {% else %}
+                                <td class="sub-total">No
+                                </td>
+                                {% endif %}
+                                <td class="qty">{{item.order.addresses.address}}</td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <br><br>
+        </div>
+        
+    </div>
+</section>
+{% endblock %}

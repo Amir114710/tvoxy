@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+sell
+{% endblock %}
+{% block content %}
+<!--Page Title-->
+<section class="page-title" style="background-image: url({% static "images/background/3.jpg" %});">
+    <div class="auto-container">
+        <ul class="bread-crumb">
+            <li><a href="{% url 'home:main' %}">Home</a></li>
+            <li class="active">Sell</li>
+        </ul>
+        <h1>Sell</h1>
+    </div>
+</section>
+<!--End Page Title-->
+
+<!--Shop Section-->
+<section class="shop-section shop-page">
+    <div class="auto-container">
+        <!--Sort By-->
+        <div class="items-sorting">
+            <div class="row clearfix">
+                <div class="results-column col-md-6 col-sm-6 col-xs-12">
+                    <h4>What kind of phone do you have </h4>
+                </div>
+            </div>
+        </div>
+                    
+        <div class="row clearfix">
+            <!--Shop Item-->
+            
+            {% for item in sell %}
+            <div class="shop-item col-md-3 col-sm-6 col-xs-12">
+                <div class="inner-box">
+                    <figure class="image-box">
+                        <a href="{% url 'sell:category_phone_detail' item.id %}"><img src="{{item.image.url}}" alt=""width="100em" height="200em" /></a>
+                    </figure>
+                    <!--Lower Content-->
+                    <div class="lower-content">
+                        <h3><a href="{% url 'sell:category_phone_detail' item.id %}">{{item.title}}</a></h3>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}    
+        </div>
+    </div>
+</section>
+{% endblock %}

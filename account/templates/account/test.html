@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>دانلود بخش به PDF</title>
+  <!-- بارگذاری کتابخانه html2pdf از CDN معتبر -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+  <!-- بخش قابل دانلود -->
+  <div id="download-area">
+    <h2>صورتحساب</h2>
+    <p>شماره سفارش: 1234</p>
+    <p>مبلغ: 100 دلار</p>
+  </div>
+
+  <!-- دکمه دانلود -->
+  <button onclick="downloadSection()">📥 دانلود PDF</button>
+
+  <!-- تابع جاوااسکریپت -->
+  <script>
+    function downloadSection() {
+      const element = document.getElementById("download-area");
+      html2pdf().from(element).save("download.pdf");
+    }
+  </script>
+
+</body>
+</html>

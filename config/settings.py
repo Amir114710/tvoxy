@@ -45,6 +45,9 @@ APPS = [
     'cart.apps.CartConfig',
     'sell.apps.SellConfig',
     'sell_cart.apps.SellCartConfig',
+    'sell_pay.apps.SellPayConfig',
+    'repair_pay.apps.RepairPayConfig',
+    'pay.apps.PayConfig',
 ]
 
 PACKAGES = [
@@ -179,3 +182,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = '97888az@gmail.com'
 EMAIL_HOST_PASSWORD = 'aoty ggxd gqph kksm'
+
+# settings.py
+
+STRIPE_SECRET_KEY = "sk_test_..."
+STRIPE_PUBLIC_KEY = "pk_test_..."
