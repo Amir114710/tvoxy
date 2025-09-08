@@ -33,14 +33,6 @@ SellPhone
                         {% csrf_token %}
                         <div class="row clearfix">
                             <!--Form Group-->
-                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                                <div class="field-label">Full_name <sup>*</sup></div>
-                                <input type="text" name="Full_name" value="" placeholder="" required>
-                            </div>
-                            <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                                <div class="field-label">PhoneNumber <sup>*</sup></div>
-                                <input type="text" name="phone_number" value="" placeholder="" required>
-                            </div>
                             <div class="form-group country col-md-12 col-sm-12 col-xs-12">
                                 <div class="field-label">Phone Model <sup>*</sup> </div>
                                 <select class="form-control" name="phone_model">
@@ -56,6 +48,16 @@ SellPhone
                                     <option value="{{x.condition}}">{{x.condition}}</option>
                                     {% endfor %}
                                 </select>
+                                <div class="dropdown" id="dropdown-button-style">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:#2E4C66 ;">
+                                    Discription
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-top: -2em;">
+                                    <a onclick="JSalert()" class="dropdown-item">good</a>
+                                    <a onclick="JSalert1()" class="dropdown-item">fair</a>
+                                    <a onclick="JSalert2()" class="dropdown-item">semi</a>
+                                </div>
+                                </div>
                             </div>
                             <div class="form-group country col-md-12 col-sm-12 col-xs-12">
                                 <div class="field-label">storage <sup>*</sup> </div>

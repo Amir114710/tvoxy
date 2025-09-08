@@ -68,8 +68,6 @@ class PhoneModel(models.Model):
 
 class Sell(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE , null=True , blank=True)
-    Full_name = models.CharField(max_length=1050 , null=True , blank=True)
-    phone_number = models.CharField(max_length=1050 , null=True , blank=True)
     phone = models.CharField(max_length=1050 , null=True , blank=True)  
     condition = models.CharField(max_length=1050 , null=True , blank=True)
     storage = models.CharField(max_length=1050 , null=True , blank=True)
@@ -101,3 +99,16 @@ class Condition(models.Model):
 
     def __str__(self):
         return self.condition
+    
+class SellForm(models.Model):
+    full_name = models.CharField(max_length=1050 , null=True , blank=True)
+    phone_number = models.CharField(max_length=1050 , null=True , blank=True)
+    email = models.CharField(max_length=1050 , null=True , blank=True)
+    account_number = models.CharField(max_length=1050 , null=True , blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.full_name
+    
+    class Meta:
+        ordering = ('-created',)

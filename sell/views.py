@@ -51,7 +51,7 @@ class SellCategoryPhone(TemplateView):
         return context
 
 class CategoryPhoneView(View):
-    template_name = 'sell/sell_category_detail.html'
+    template_name = 'sell/sell_category_form.html'
     def get(self , request , pk):
         category = PhoneCategory.objects.get(pk=pk)
         category_data = category.phone_model.all()
@@ -62,8 +62,6 @@ class CategoryPhoneView(View):
 class CategoryFormView(View):
     def post(self , request):
         phone_model = request.POST.get('phone_model')
-        Full_name = request.POST.get('Full_name')
-        phone_number = request.POST.get('phone_number')
         storage = request.POST.get('storage')
         condition = request.POST.get('condition')
         for x in PhoneModel.objects.all():
@@ -78,6 +76,18 @@ class CategoryFormView(View):
             if condition == x.condition:
                 price2 = x.price
         total_price = price1 + price2 + price3
-        Sell.objects.create(user = request.user , Full_name=Full_name , phone_number=phone_number , phone=phone_model , condition=condition , storage=storage, total_price=total_price)
+        Sell.objects.create(user = request.user , phone=phone_model , condition=condition , storage=storage, total_price=total_price)
         send_verification_email()
         return render(self.request , 'sell/sell_sucess.html', {'total_price':total_price})
+    
+class SellFormView(View):
+    template_name = 'sell/sell_form.html'
+    def get(self , request):
+        return render(request , self.template_name , {})
+    def post(self , request):
+        phone_number = request.POST.get('phone_number')
+        full_name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        account_number = request.POST.get('account_number')
+        SellForm.objects.create(phone_number=phone_number , full_name=full_name , email=email , account_number=account_number)
+        return render(request , 'sell/success2.html' , {})

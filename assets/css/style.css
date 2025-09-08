@@ -6151,10 +6151,11 @@ ul,li{
 }
 #dropdown-button-style{
 	position: relative;
-	left: 14.5em;
-	top:-1.9em;
-	width: 5em;
-	height: 5em;
+	left: 42em;
+	top:-2.8em;
+	width: 0em;
+	height: 0em;
+	color: white;
 }
 .check-box-1{
 	margin-left:0em!important;
