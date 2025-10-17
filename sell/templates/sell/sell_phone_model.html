@@ -35,11 +35,11 @@ sell
             <div class="shop-item col-md-3 col-sm-6 col-xs-12">
                 <div class="inner-box">
                     <figure class="image-box">
-                        <a href="{% url 'sell:category_phone_model' item.id %}"><img src="{{item.image.url}}" alt=""width="100em" height="200em" /></a>
+                        <a href="{% url 'sell:category_phone_detail' item.id %}"><img src="{{item.image.url}}" alt=""width="100em" height="200em" /></a>
                     </figure>
                     <!--Lower Content-->
                     <div class="lower-content">
-                        <h3><a href="{% url 'sell:category_phone_model' item.id %}">{{item.title}}</a></h3>
+                        <h3><a href="{% url 'sell:category_phone_detail' item.id %}">{{item.title}}</a></h3>
                     </div>
                 </div>
             </div>

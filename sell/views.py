@@ -49,15 +49,23 @@ class SellCategoryPhone(TemplateView):
         context = super().get_context_data(**kwargs)
         context['sell'] = PhoneCategory.objects.all()
         return context
+    
+class SellModelPhone(View):
+    template_name = 'sell/sell_phone_model.html'
+    def get(self , request , pk):
+        category = PhoneCategory.objects.get(pk=pk)
+        sell = category.phone_model.all()
+        return render(request , self.template_name , {'sell':sell})
 
 class CategoryPhoneView(View):
     template_name = 'sell/sell_category_form.html'
     def get(self , request , pk):
-        category = PhoneCategory.objects.get(pk=pk)
-        category_data = category.phone_model.all()
+        phone_model = PhoneModel.objects.get(pk=pk)
+        phone_storage = phone_model.sell_storage.all()
+        phone_condition = phone_model.sell_condition.all()
         condition = Condition.objects.all()
         storage = Storage.objects.all()
-        return render(request , self.template_name , {'category_data':category_data ,'storage':storage , 'condition':condition})
+        return render(request , self.template_name , {'phone_model':phone_model ,'storage':phone_storage , 'condition':phone_condition})
 
 class CategoryFormView(View):
     def post(self , request):
@@ -77,7 +85,7 @@ class CategoryFormView(View):
                 price2 = x.price
         total_price = price1 + price2 + price3
         Sell.objects.create(user = request.user , phone=phone_model , condition=condition , storage=storage, total_price=total_price)
-        send_verification_email()
+        # send_verification_email()
         return render(self.request , 'sell/sell_sucess.html', {'total_price':total_price})
     
 class SellFormView(View):
@@ -85,9 +93,12 @@ class SellFormView(View):
     def get(self , request):
         return render(request , self.template_name , {})
     def post(self , request):
+        user  = request.user
+        for x in user.sell_user.all():
+            sell = x
         phone_number = request.POST.get('phone_number')
         full_name = request.POST.get('full_name')
         email = request.POST.get('email')
         account_number = request.POST.get('account_number')
-        SellForm.objects.create(phone_number=phone_number , full_name=full_name , email=email , account_number=account_number)
+        SellForm.objects.create(user = user , sell=sell , phone_number=phone_number , full_name=full_name , email=email , account_number=account_number)
         return render(request , 'sell/success2.html' , {})
